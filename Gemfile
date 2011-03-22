@@ -29,3 +29,8 @@ gem 'pg'
 # group :development, :test do
 #   gem 'webrat'
 # end
+#
+group :test do
+  gem "factory_girl"
+  gem "shoulda"
+end

@@ -10,12 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110318002933) do
+ActiveRecord::Schema.define(:version => 20110416154357) do
 
   create_table "seasons", :force => true do |t|
-    t.string   "name"
+    t.string   "ordinal"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "start_year"
+    t.integer  "stop_year"
   end
 
 end

@@ -1,0 +1,22 @@
+<h1>Showing All Matches</h1>
+
+<table border="1" cellpadding="5" cellspacing="1">
+  <tr>
+    <th>Match Date</th>
+    <th>Stop Year</th>
+    <th colspan="3">Actions</th>
+  </tr>
+
+<% @matches.each do |match| %>
+  <tr>
+    <td><%= match.match_date %></td>
+    <td><%= link_to 'Show', match %></td>
+    <td><%= link_to 'Edit', edit_match_path(match) %></td>
+    <td><%= link_to 'Destroy', match, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Add a New Match', new_match_path %>

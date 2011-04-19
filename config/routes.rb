@@ -1,4 +1,5 @@
 Sppl::Application.routes.draw do
+  resources :matches
   resources :seasons
 
   # The priority is based upon order of creation:

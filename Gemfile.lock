@@ -70,6 +70,7 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.25)
+    watchr (0.7)
 
 PLATFORMS
   ruby
@@ -81,3 +82,4 @@ DEPENDENCIES
   rails (= 3.0.5)
   shoulda
   test-unit (~> 2.2.0)
+  watchr

@@ -41,6 +41,14 @@ class SeasonsControllerTest < ActionController::TestCase
     end
   end
 
+  context "When showing a single Season" do
+    should "use the show template" do
+      get :show, :id => @season.to_param
+      assert_response :success
+      assert_template :show
+    end
+  end
+
   context "When showing the form to create a New Season" do
     setup do
       get :new
@@ -61,38 +69,45 @@ class SeasonsControllerTest < ActionController::TestCase
     end
   end
 
-  #test "should create season" do
-    #assert_difference('Season.count') do
-      #post :create, :season => @season.attributes
-    #end
-
-    #assert_redirected_to season_path(assigns(:season))
-  #end
-
-  context "When showing a single Season" do
-    should "use the show template" do
-      get :show, :id => @season.to_param
-      assert_response :success
-      assert_template :show
+  context "When creating a Season" do
+    should "be able to create a Season" do
+      assert_difference('Season.count') do
+        post :create, :season => @season.attributes
+      end
+      assert_redirected_to season_path(assigns(:season))
     end
   end
 
-  #test "should get edit" do
-    #get :edit, :id => @season.to_param
-    #assert_response :success
-  #end
-#
-  #test "should update season" do
-    #put :update, :id => @season.to_param, :season => @season.attributes
-    #assert_redirected_to season_path(assigns(:season))
-  #end
-#
-  #test "should destroy season" do
-    #assert_difference('Season.count', -1) do
-      #delete :destroy, :id => @season.to_param
-    #end
-#
-    #assert_redirected_to seasons_path
-  #end
+  context "When editing a Season" do
+    setup do
+      get :edit, :id => @season.to_param
+    end
+
+    should "display the edit form" do
+      assert_response :success
+    end
+
+    should "use the edit template" do
+      assert_template :edit
+    end
+
+    should "redirect to the show view after a successful edit" do
+      put :update, :id => @season.to_param, :season => @season.attributes
+      assert_redirected_to season_path(assigns(:season))
+    end
+  end
+
+  context "When removing a Season" do
+    should "be able to destroy a Season" do
+      assert_difference('Season.count', -1) do
+        delete :destroy, :id => @season.to_param
+      end
+    end
+
+    should "be redirected back to the display of all Seasons" do
+      delete :destroy, :id => @season.to_param
+      assert_redirected_to seasons_path
+    end
+  end
 
 end

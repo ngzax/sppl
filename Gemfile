@@ -1,16 +1,14 @@
-source 'http://rubygems.org'
+source "http://rubygems.org"
 
-gem 'rails', '3.0.5'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-gem 'pg'
+gem "rails",                      "3.0.5"
+gem "inherited_resources",        "~> 1.2"
+gem "inherited_resources_views",  "~> 0.4"
+gem "pg",                         "~> 0.10"
 
 group :test do
-  gem "test-unit",    "~> 2.2.0", :require => 'test/unit'
-  gem "factory_girl"
-  gem "factory_girl_rails"
-  gem "shoulda"
+  gem "test-unit",          "~> 2.2", :require => "test/unit"
+  gem "factory_girl",       "~> 1.3"
+  gem "factory_girl_rails", "~> 1.0"
+  gem "shoulda",            "~> 2.11"
   gem "watchr"
 end

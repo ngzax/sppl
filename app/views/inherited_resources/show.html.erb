@@ -1,0 +1,5 @@
+<h3>Showing <%= params[:controller].singularize.titleize %> #<%= resource.id %></h3>
+<p id="notice"><%= notice %></p>
+<%= render :partial => "show" %> 
+<%= link_to "Edit", edit_resource_path(@season) %> |
+<%= link_to 'View All', {:controller => params[:controller], :action => :index} %>

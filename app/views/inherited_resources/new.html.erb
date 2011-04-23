@@ -1,0 +1,3 @@
+<h1>Creating a New <%= params[:controller].singularize.titleize %></h1>
+<%= render :partial => 'form' %>
+<%= link_to 'Cancel', {:controller => params[:controller], :action => :index} %>

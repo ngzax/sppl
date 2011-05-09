@@ -10,12 +10,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110419003131) do
+ActiveRecord::Schema.define(:version => 20110509015952) do
 
   create_table "matches", :force => true do |t|
     t.date     "match_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "season_id"
   end
 
   create_table "seasons", :force => true do |t|

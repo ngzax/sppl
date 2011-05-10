@@ -1,4 +1,13 @@
 <p>
-  <b>Name:</b>
-  Season <%= @season.ordinal %>
+  <b>Name:</b> Season <%= @season.ordinal %>
 </p>
+<p>
+  <b>Matches:</b>
+  <ul>
+    <% for match in @season.matches %>
+      <li><%= link_to "Match ##{match.id} on #{match.match_date}", match_path(match) %></li>
+    <% end %>
+  </ul>
+  <% if @season.matches.empty? %><i>None</i><% end %>
+</p>
+

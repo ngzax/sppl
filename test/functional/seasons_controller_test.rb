@@ -4,6 +4,8 @@ class SeasonsControllerTest < ActionController::TestCase
   
   setup do
     @season = Factory(:season)
+    @match = Factory(:match)
+    @season.matches << @match
   end
   
   context "When showing ALL the Seasons in HTML" do
@@ -42,10 +44,21 @@ class SeasonsControllerTest < ActionController::TestCase
   end
 
   context "When showing a single Season" do
-    should "use the show template" do
+    setup do
       get :show, :id => @season.to_param
+    end
+
+    should "use the show template" do
       assert_response :success
       assert_template :show
+    end
+
+    should "Correctly display the Header" do
+      assert_select "h3", "Showing Season ##{@season.id}"
+    end
+
+    should "display a list of all associated matches" do
+      assert_select "p ul li a", "Match ##{@match.id} on #{@match.match_date}"
     end
   end
 

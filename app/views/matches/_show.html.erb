@@ -1,4 +1,2 @@
-<p>
-  <b>Match Date:</b>
-  <%= @match.match_date %>
-</p>
+<p> <b>Match Date:</b> <%= @match.match_date %></p>
+<p><b>Season:</b> <%= link_to "Season ##{@match.season.id}", season_path(@match.season) %></p>

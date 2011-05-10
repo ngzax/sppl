@@ -4,6 +4,9 @@ class MatchesControllerTest < ActionController::TestCase
   
   setup do
     @match = Factory(:match)
+    @season = Factory(:season)
+    @match.season_id = @season.id
+    @match.save
   end
   
   context "When showing ALL the Matches in HTML" do
@@ -38,10 +41,17 @@ class MatchesControllerTest < ActionController::TestCase
   end
 
   context "When showing a single Match" do
-    should "use the show template" do
+    setup do
       get :show, :id => @match.to_param
       assert_response :success
+    end
+
+    should "use the show template" do
       assert_template :show
+    end
+    
+    should "display a link back to the associated Season" do
+      assert_select "a", "Season ##{@match.season.id}"
     end
   end
 

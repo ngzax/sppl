@@ -16,7 +16,12 @@
       <th><%= f.label :match_date %></th>
       <td><%= f.text_field :match_date %></td>
     </tr>
+    <tr>
+      <th><%= f.label :season %></th>
+      <td><%= f.collection_select(:season_id, Season.all, :id, :name)%></td>
+    </tr>
   </table>
+  <p/>
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -51,10 +51,13 @@ class MatchesControllerTest < ActionController::TestCase
     end
     
     should "display a link back to the associated Season" do
-      assert_select "a", "Season ##{@match.season.id}"
+      assert_select "a", @match.season.name
     end
   end
 
+  # -------------------------------------------------------------------
+  # New
+  # -------------------------------------------------------------------
   context "When showing the form to create a New Match" do
     setup do
       get :new
@@ -70,6 +73,11 @@ class MatchesControllerTest < ActionController::TestCase
 
     should "Show that we can enter Ordinal, Start Year, and Stop Year" do
       assert_select "table tr th", "Match date"
+    end
+
+    should "show a dropdown to associate the Match with a Season" do
+      assert_select "table tr th", "Season"
+      assert_select "table tr td select[id='match_season_id']"
     end
   end
 

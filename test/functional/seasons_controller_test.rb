@@ -54,7 +54,7 @@ class SeasonsControllerTest < ActionController::TestCase
     end
 
     should "Correctly display the Header" do
-      assert_select "h3", "Showing Season ##{@season.id}"
+      assert_select "h3", "Showing a Season"
     end
 
     should "display a list of all associated matches" do

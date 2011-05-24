@@ -31,15 +31,18 @@ class GamesControllerTest < ActionController::TestCase
       assert_select "h1", "Showing All Games"
     end
 
-    should "Use Game Date as Headers" do
-      assert_select "table tr th", "Game Date"
+    should "Use Game # as a Header" do
+      assert_select "table tr th", "Game #"
     end
 
-    should "Properly display the Game's Name, Start Year, and Stop Year" do
-      assert_select "table tr td", "#{@game.match_date}"
+    should "Properly display the Game's Ordinal" do
+      assert_select "table tr td", "#{@game.ordinal}"
     end
   end
 
+  # -------------------------------------------------------------------
+  # Show
+  # -------------------------------------------------------------------
   context "When showing a single Game" do
     setup do
       get :show, :id => @game.to_param
@@ -50,8 +53,8 @@ class GamesControllerTest < ActionController::TestCase
       assert_template :show
     end
     
-    should "display a link back to the associated Season" do
-      assert_select "a", @game.season.name
+    should "display a link back to the associated Match" do
+      assert_select "a", "#{@game.match.match_date}"
     end
   end
 
@@ -71,13 +74,13 @@ class GamesControllerTest < ActionController::TestCase
       assert_select "h1", "Creating a New Game"
     end
 
-    should "Show that we can enter Ordinal, Start Year, and Stop Year" do
-      assert_select "table tr th", "Game date"
+    should "Show that we can enter Ordinal" do
+      assert_select "table tr th", "Game #"
     end
 
-    should "show a dropdown to associate the Game with a Season" do
-      assert_select "table tr th", "Season"
-      assert_select "table tr td select[id='game_season_id']"
+    should "show a dropdown to associate the Game with a Match" do
+      assert_select "table tr th", "Match"
+      assert_select "table tr td select[id='game_match_id']"
     end
   end
 

@@ -1,0 +1,23 @@
+<h1>Showing All Games</h1>
+
+<table border="1" cellpadding="5" cellspacing="1">
+  <tr>
+    <th>Game #</th>
+    <th>Match</th>
+    <th colspan="3">Actions</th>
+  </tr>
+
+<% @games.each do |game| %>
+  <tr>
+    <td><%= game.ordinal %></td>
+    <td><%= link_to game.match.match_date, match_path(game.match) %></td>
+    <td><%= link_to 'Show', game %></td>
+    <td><%= link_to 'Edit', edit_game_path(game) %></td>
+    <td><%= link_to 'Destroy', game, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Add a New Game', new_game_path %>

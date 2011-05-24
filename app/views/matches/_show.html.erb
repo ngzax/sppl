@@ -1,2 +1,11 @@
-<p> <b>Match Date:</b> <%= @match.match_date %></p>
+<p><b>Match Date:</b> <%= @match.match_date %></p>
 <p><b>Season:</b> <%= link_to @match.season.name, season_path(@match.season) %></p>
+<p>
+  <b>Games:</b>
+  <ul>
+    <% for game in @match.games %>
+      <li><%= link_to "Game ##{game.ordinal}", game_path(game) %></li>
+    <% end %>
+  </ul>
+  <% if @match.games.empty? %><li><i>None</i></li><% end %>
+</p>

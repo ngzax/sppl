@@ -10,7 +10,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110529174109) do
+ActiveRecord::Schema.define(:version => 20110605130617) do
+
+  create_table "game_players", :force => true do |t|
+    t.integer  "game_id"
+    t.integer  "player_id"
+    t.integer  "place"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "game_players", ["game_id", "player_id"], :name => "ak_game_players"
 
   create_table "games", :force => true do |t|
     t.integer  "match_id"

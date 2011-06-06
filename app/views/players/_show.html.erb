@@ -15,4 +15,22 @@
 </table>
 <p/>
 <h5>Games Played</h5>
+<% if @player.games.empty? %>
+<i>None</i>
+<% else %>
+<table border="1" cellpadding="5" cellspacing="1">
+  <tr>
+    <th>Match</th>
+    <th>Game</th>
+    <th>Place</th>
+  </tr>
+<%   for played_game in @player.game_players %>
+  <tr>
+    <td><%= link_to "Match ##{played_game.game.match.id} on #{played_game.game.match.match_date}", match_path(played_game.game.match) %></li>
+    <td><%= link_to "#{played_game.game.name}", game_path(played_game.game.id) %></td>
+    <td><%= played_game.place %></td>
+  </ul>
+<%   end %>
+</table>
+<% end %>
 <p/>

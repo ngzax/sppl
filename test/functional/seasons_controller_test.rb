@@ -43,6 +43,7 @@ class SeasonsControllerTest < ActionController::TestCase
     end
   end
 
+
   context "When showing a single Season" do
     setup do
       get :show, :id => @season.to_param
@@ -58,9 +59,15 @@ class SeasonsControllerTest < ActionController::TestCase
     end
 
     should "display a list of all associated matches" do
-      assert_select "p ul li a", "Match ##{@match.id} on #{@match.match_date}"
+      assert_select "td", "Match ##{@match.id} on #{@match.match_date}"
+    end
+
+    should "display an Actions Section with a link to add a New Match" do
+      assert_select "th", "Actions"
+      assert_select "td a", "Add a Match"
     end
   end
+
 
   context "When showing the form to create a New Season" do
     setup do

@@ -1,13 +1,21 @@
-<p>
-  <b>Name:</b> Season <%= @season.ordinal %>
-</p>
-<p>
-  <b>Matches:</b>
-  <ul>
-    <% for match in @season.matches %>
-      <li><%= link_to "Match ##{match.id} on #{match.match_date}", match_path(match) %></li>
-    <% end %>
-  </ul>
-  <% if @season.matches.empty? %><i>None</i><% end %>
-</p>
-
+<p/>
+<table border="1" cellpadding="5" cellspacing="3">
+  <tr>
+    <th>Name:</th>
+    <td>Season <%= @season.ordinal %></td>
+  </tr>
+  <tr>
+    <th>Matches:</th>
+    <td>
+      <% for match in @season.matches %>
+        <%= link_to "Match ##{match.id} on #{match.match_date}", match_path(match) %><br/>
+      <% end %>
+      <% if @season.matches.empty? %><i>None</i><% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>Actions</th>
+    <td><%= link_to "Add a Match", :action => 'new_match', :id => @season.id %></td>
+  </tr>
+</table>
+<p/>

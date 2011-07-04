@@ -55,21 +55,29 @@ class MatchesControllerTest < ActionController::TestCase
       assert_template :show
     end
     
+    should "Correctly display the Header" do
+      assert_select "h3", "Showing a Match"
+    end
+
     should "display a link back to the associated Season" do
       assert_select "a", @match.season.name
     end
 
-    should "display a link to an Associated Game" do
-      assert_select "a", "Game ##{@g.ordinal}" 
+    should "display a list of links to all associated Games in the row detail" do
+      assert_select "td a", "Game ##{@g.ordinal}"
     end
 
-# Not exactly sure why this doesn't work???
-#    should "display the italic word 'None' if there are no Associated Games" do
-#      @match.games.delete_all
-#      @match.save
-#      get :show, :id => @match.to_param
-#      assert_select "ul li i", "None"
-#    end
+    should "display an Actions Section with a link to add a New Game" do
+      assert_select "th", "Actions"
+      assert_select "td a", "Add a Game"
+    end
+  end
+
+  context "When showing a single Match without associated Games" do
+    should "display the italic word 'None' if there are no Associated Games" do
+      get :show, :id => @match.to_param
+      assert_select "td i", "None"
+    end
   end
 
   # -------------------------------------------------------------------

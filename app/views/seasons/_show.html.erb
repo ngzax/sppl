@@ -8,7 +8,7 @@
     <th>Matches:</th>
     <td>
       <% for match in @season.matches %>
-        <%= link_to "Match ##{match.id} on #{match.match_date}", match_path(match) %><br/>
+        <%= link_to "#{match}", match_path(match) %><br/>
       <% end %>
       <% if @season.matches.empty? %><i>None</i><% end %>
     </td>

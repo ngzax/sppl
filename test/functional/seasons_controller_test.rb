@@ -58,8 +58,8 @@ class SeasonsControllerTest < ActionController::TestCase
       assert_select "h3", "Showing a Season"
     end
 
-    should "display a list of all associated matches" do
-      assert_select "td", "Match ##{@match.id} on #{@match.match_date}"
+    should "display a list of links to all associated matches" do
+      assert_select "td a", "#{@match}"
     end
 
     should "display an Actions Section with a link to add a New Match" do

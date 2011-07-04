@@ -1,7 +1,13 @@
 Sppl::Application.routes.draw do
   
   resources :games
-  resources :matches
+
+  resources :matches do
+    member do
+      get :new_game
+    end
+  end
+  
   resources :players
 
   resources :seasons do

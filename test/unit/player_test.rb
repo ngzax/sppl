@@ -28,4 +28,8 @@ class PlayerTest < ActiveSupport::TestCase
     assert_equal 1, @player.games.count
   end
   
+  should "display itself as {first_name} {last_name} by default" do
+    assert_equal "#{@player.first_name} #{@player.last_name}", "#{@player}"
+  end
+
 end

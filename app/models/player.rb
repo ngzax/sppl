@@ -7,4 +7,8 @@ class Player < ActiveRecord::Base
     return "#{self.first_name} #{self.last_name}"
   end
 
+  def to_s
+    full_name
+  end
+
 end

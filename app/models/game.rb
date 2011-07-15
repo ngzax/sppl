@@ -9,4 +9,8 @@ class Game < ActiveRecord::Base
     return "Game ##{ordinal}"
   end
 
+  def to_s
+    "#{name} [#{match}]"
+  end
+
 end

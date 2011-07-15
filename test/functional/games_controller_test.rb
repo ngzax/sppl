@@ -9,6 +9,9 @@ class GamesControllerTest < ActionController::TestCase
     @game.save
   end
   
+  # -------------------------------------------------------------------
+  # Index
+  # -------------------------------------------------------------------
   context "When showing ALL the Games in HTML" do
     setup do
       get :index
@@ -45,6 +48,8 @@ class GamesControllerTest < ActionController::TestCase
   # -------------------------------------------------------------------
   context "When showing a single Game" do
     setup do
+      @p = Factory(:player)
+      @game.players << @p
       get :show, :id => @game.to_param
       assert_response :success
     end
@@ -55,6 +60,22 @@ class GamesControllerTest < ActionController::TestCase
     
     should "display a link back to the associated Match" do
       assert_select "a", "#{@game.match.match_date}"
+    end
+    
+    should "display a list of links to all associated Players in the row detail" do
+      assert_select "td a", "#{@p}"
+    end
+
+    should "display an Actions Section with a link to add a New Player" do
+      assert_select "th", "Actions"
+      assert_select "td a", "Choose Players"
+    end
+  end
+
+  context "When showing a single Game without associated Players" do
+    should "display the italic word 'None' if there are no Associated Players" do
+      get :show, :id => @game.to_param
+      assert_select "td i", "None"
     end
   end
 
@@ -93,6 +114,9 @@ class GamesControllerTest < ActionController::TestCase
     end
   end
 
+  # -------------------------------------------------------------------
+  # Edit
+  # -------------------------------------------------------------------
   context "When editing a Game" do
     setup do
       get :edit, :id => @game.to_param

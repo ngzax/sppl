@@ -35,6 +35,7 @@ class PlayersControllerTest < ActionController::TestCase
     should "Properly display the Player's Id" do
       assert_select "table tr td", "#{@player.id}"
     end
+    
   end
 
   # -------------------------------------------------------------------
@@ -49,6 +50,15 @@ class PlayersControllerTest < ActionController::TestCase
     should "use the show template" do
       assert_template :show
     end
+    
+    should "Correctly display the Header" do
+      assert_select "h3", "Showing a Player"
+    end
+
+#    should "display a link back to the associated Match" do
+#      assert_select "a", @player.full_name
+#    end
+
   end
 
   # -------------------------------------------------------------------

@@ -9,6 +9,9 @@ class MatchesControllerTest < ActionController::TestCase
     @match.save
   end
   
+  # -------------------------------------------------------------------
+  # Index
+  # -------------------------------------------------------------------
   context "When showing ALL the Matches in HTML" do
     setup do
       get :index

@@ -1,5 +1,5 @@
-<h3>Choose Players for <%= @game %></h3>
-<% form_for :game, :action => 'update_players' do |f| %>
+<h3>Showing all Players for <%= @game %></h3>
+<%= form_for @game do |f| %>
   <table>
   <% for player in Player.all %>
     <tr>

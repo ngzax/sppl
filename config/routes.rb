@@ -6,6 +6,8 @@ Sppl::Application.routes.draw do
     end
   end
 
+  resources :game_players
+
   resources :matches do
     member do
       get :new_game

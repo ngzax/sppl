@@ -4,6 +4,7 @@ class GameTest < ActiveSupport::TestCase
 
   setup do
     @game = Factory(:game)
+    @game.match = Factory(:match)
   end
 
   should have_db_column :ordinal
@@ -27,6 +28,20 @@ class GameTest < ActiveSupport::TestCase
   
   should "display itself as Game #(ordinal) [Match] by default" do
     assert_equal "Game ##{@game.ordinal} [#{@game.match}]", "#{@game}"
+  end
+
+  context "when sorting Games" do
+    should "sort Games with differing Match Dates by ascending Match Date" do
+      @g2 = Factory(:another_game)
+      @g2.match = Factory(:another_match)
+      assert @game < @g2
+    end
+
+    should "sort Games with the same Match Date by ascending Ordinal" do
+      @g2 = @game.clone
+      @g2.ordinal = 2
+      assert @game < @g2
+    end
   end
 
 end

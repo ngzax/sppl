@@ -63,11 +63,11 @@ class MatchesControllerTest < ActionController::TestCase
     end
 
     should "display a link back to the associated Season" do
-      assert_select "a", @match.season.name
+      assert_select "td a", @match.season.name
     end
 
     should "display a list of links to all associated Games in the row detail" do
-      assert_select "td a", "Game ##{@g.ordinal}"
+      assert_select "td a", "#{@g}"
     end
 
     should "display an Actions Section with a link to add a New Game" do

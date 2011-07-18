@@ -110,7 +110,11 @@ class GamesControllerTest < ActionController::TestCase
       assert_difference('Game.count') do
         post :create, :game => @game.attributes
       end
-      assert_redirected_to game_path(assigns(:game))
+    end
+
+    should "be redirected to the index page" do
+      post :create, :game => @game.attributes
+      assert_redirected_to games_path
     end
   end
 

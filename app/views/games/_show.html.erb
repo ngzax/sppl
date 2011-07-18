@@ -19,7 +19,7 @@
   </tr>
   <tr>
     <th>Actions</th>
-    <td><%= link_to "Choose Players", :controller => :game_players, :action => :index, :game_id => @game.id %></td>
+    <td><%= link_to "Choose Players", :action => :edit, :id => @game.id %></td>
   </tr>
 </table>
 <p/>

@@ -20,6 +20,17 @@
       <th><%= f.label :match %></th>
       <td><%= f.collection_select(:match_id, Match.all, :id, :match_date)%></td>
     </tr>
+      <th>Players</th>
+      <td>
+        <table>
+        <% for player in @players %>
+          <tr>
+            <td><%= check_box_tag "player_ids[]", "#{player.id}", @game.players.include?(player) -%></td>
+            <td><%= player %></td>
+          </tr>
+        <% end %>
+      </table>
+    </td>
   </table>
   <p/>
   <div class="actions">

@@ -1,7 +1,7 @@
 #BottomBar {
   border         : 1px solid;
-  border-color   : #003366;
-  color          : #003366;
+  border-color   : #4E56C2;
+  color          : #4E56C2;
   font-family    : Tahoma, Verdana, Arial, Helvetica, sans-serif;
   font-size      : 50%;
   margin-top     : 100px;
@@ -59,8 +59,8 @@
 }
 
 #Header {
-  background-color    : #FFFFFF;
-  color               : #003366;
+  background-color : #FFFFFF;
+  color            : #4E56C2;
 }
 
 #Inspector table {
@@ -87,7 +87,7 @@
 }
 
 #ResourceMenu {
-  background-color : #003366;
+  background-color : #4E56C2;
   padding-top      : 5px;
   padding-left     : 5px;
   padding-bottom   : 5px;
@@ -105,7 +105,7 @@
 
 #ResourceMenu a.selected {
   background-color : #FFFFFF;
-  color            : #003366;
+  color            : #4E56C2;
   font-weight      : bold;
   margin-right     : 15px;
   padding-top      : 3px;
@@ -117,7 +117,7 @@
 
 #SubResourceMenu {
 	border         : 1px solid;
-	border-color   : #003366;	
+	border-color   : #4E56C2;	
 	border-left    : 1px;
 	border-right   : 1px;
 	border-top     : 0px;
@@ -134,7 +134,7 @@
 #SubResourceMenu a:visited,
 #SubResourceMenu a:hover 
 {
-  color           : #003366;
+  color           : #4E56C2;
   text-decoration : none;
 }
 
@@ -156,7 +156,7 @@
 
 #TertiaryResourceMenu {
 	border         : 1px solid;
-	border-color   : #003366;	
+	border-color   : #4E56C2;	
 	border-left    : 1px;
 	border-right   : 1px;
 	border-top     : 0px;
@@ -173,7 +173,7 @@
 #TertiaryResourceMenu a:visited,
 #TertiaryResourceMenu a:hover 
 {
-  color           : #003366;
+  color           : #4E56C2;
   text-decoration : none;
 }
 
@@ -198,7 +198,7 @@
 #TopBar a:visited,
 #TopBar a:hover 
 {
-  color           : #003366;
+  color           : #4E56C2;
   text-decoration : none;
 }
 

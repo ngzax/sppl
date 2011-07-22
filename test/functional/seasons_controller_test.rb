@@ -26,10 +26,6 @@ class SeasonsControllerTest < ActionController::TestCase
       assert_tag :tag => "a", :content => "Add a New Season", :attributes => {:href => new_season_path}
     end
 
-    should "Correctly display the Header" do
-      assert_select "h1", "Showing All Seasons"
-    end
-
     should "Use Name, Start Year, and Stop Year as Headers" do
       assert_select "table tr th", "Name"
       assert_select "table tr th", "Start Year"

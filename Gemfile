@@ -1,6 +1,7 @@
 source "http://rubygems.org"
 
 gem "rails",                      "~> 3.0"
+gem "builder",                    "~> 2.1"
 gem "inherited_resources",        "~> 1.2"
 gem "inherited_resources_views",  "~> 0.4"
 gem "pg",                         "~> 0.10"

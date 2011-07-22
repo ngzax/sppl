@@ -1,5 +1,5 @@
 class GamesController < InheritedResources::Base
-  actions :destroy, :index, :show
+  actions :destroy, :show
   
   def create
     @game = Game.new(params[:game])
@@ -15,6 +15,11 @@ class GamesController < InheritedResources::Base
   def edit
     @game = Game.find(params[:id])
     @players = Player.all
+  end
+
+  def index
+    @page_title = "Showing All Games"
+    @games = Game.all.sort
   end
 
   def new

@@ -30,10 +30,6 @@ class GamesControllerTest < ActionController::TestCase
       assert_tag :tag => "a", :content => "Add a New Game", :attributes => {:href => new_game_path}
     end
 
-    should "Correctly display the Header" do
-      assert_select "h1", "Showing All Games"
-    end
-
     should "Use Game # as a Header" do
       assert_select "table tr th", "Game #"
     end

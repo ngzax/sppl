@@ -14,7 +14,11 @@ Sppl::Application.routes.draw do
     end
   end
   
-  resources :players
+  resources :players do
+    member do
+      get :move
+    end
+  end
 
   resources :seasons do
     member do

@@ -12,6 +12,8 @@ class GamePlayerTest < ActiveSupport::TestCase
   should belong_to      :game
   should belong_to      :player
 
+  should have_db_column :place
+
   should "initially sort Players in a Game based upon their order of addition" do
     @game.players << @gus
     @game.players << @dan

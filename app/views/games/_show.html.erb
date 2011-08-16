@@ -11,10 +11,26 @@
   <tr>
     <th align="right">Players:</th>
     <td>
-      <% for gp in @game.game_players %>
-        <%= gp.place %>. <%= link_to "#{gp.player}", player_path(gp.player) %><br/>
+      <% if @game.players.empty? %>
+      <i>None</i>
+    <% else %>
+      <table border="0" cellpadding="3" cellspacing="3">
+        <% for gp in @game.game_players %>
+        <tr>
+          <td><%= gp.place %>.</td>
+          <td><%= link_to "#{gp.player}", player_path(gp.player) %></td>
+          <td>
+        <% unless gp.place == 1 %> 
+          <%= link_to "[up]", {:controller => :players, :action => 'move', :method => 'move_higher', :game_player_id => gp.id} %> 
+        <% end %> 
+        <% unless gp.last? %> 
+          <%= link_to "[down]", {:controller => :players, :action => 'move', :method => 'move_lower', :game_player_id => gp.id} %> 
+        <% end %>
+          </td>
+        </tr>
       <% end %>
-      <% if @game.players.empty? %><i>None</i><% end %>
+      </table>
+      <% end %>
     </td>
   </tr>
   <tr>

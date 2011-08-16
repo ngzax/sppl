@@ -2,8 +2,8 @@ class Game < ActiveRecord::Base
 
   belongs_to :match
   
-  has_many :game_players, :dependent => :destroy
-  has_many :players, :through => :game_players
+  has_many :game_players, :dependent => :destroy, :order => "place"
+  has_many :players, :through => :game_players, :order => "place"
 
   def <(another_game)
     if self.match.match_date == another_game.match.match_date 

@@ -11,8 +11,8 @@
   <tr>
     <th align="right">Players:</th>
     <td>
-      <% for player in @game.players %>
-        <%= link_to "#{player}", player_path(player) %><br/>
+      <% for gp in @game.game_players %>
+        <%= gp.place %>. <%= link_to "#{gp.player}", player_path(gp.player) %><br/>
       <% end %>
       <% if @game.players.empty? %><i>None</i><% end %>
     </td>

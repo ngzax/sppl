@@ -1,6 +1,7 @@
 source "http://rubygems.org"
 
 gem "rails",                      "~> 3.0"
+gem "acts_as_list"
 gem "builder",                    "~> 2.1"
 gem "inherited_resources",        "~> 1.2"
 gem "inherited_resources_views",  "~> 0.4"

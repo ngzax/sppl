@@ -1,6 +1,6 @@
 class Player < ActiveRecord::Base
 
-  has_many :game_players, :dependent => :restrict
+  has_many :game_players, :dependent => :restrict, :order => "place"
   has_many :games, :through => :game_players
 
   def full_name

@@ -19,6 +19,7 @@
         <tr>
           <td><%= gp.place %>.</td>
           <td><%= link_to "#{gp.player}", player_path(gp.player) %></td>
+          <td>(<%= gp.points %>)</td>
           <td>
         <% unless gp.place == 1 %> 
           <%= link_to "[up]", {:controller => :players, :action => 'move', :method => 'move_higher', :game_player_id => gp.id} %> 

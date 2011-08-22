@@ -4,6 +4,7 @@ class MatchesController < InheritedResources::Base
   def new_game
     @match = Match.find(params[:id])
     @game = @match.games.build
+    @players = Player.all
   end
 
 end

@@ -16,6 +16,7 @@ class Player < ActiveRecord::Base
   end
 
   def total_points
+    return 0 if self.results.nil? 
     p = self.results.inject(0) {|sum, each| sum + each.points}
     p.round(2)
   end

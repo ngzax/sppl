@@ -24,12 +24,12 @@ class PlayersControllerTest < ActionController::TestCase
       assert_tag :tag => "a", :content => "Add a New Player", :attributes => {:href => new_player_path}
     end
 
-    should "Use Player # as a Header" do
-      assert_select "table tr th", "Player #"
+    should "Use Player Total Points as a Header" do
+      assert_select "table tr th", "Total Points"
     end
 
-    should "Properly display the Player's Id" do
-      assert_select "table tr td", "#{@player.id}"
+    should "Properly display the Player's Total Points" do
+      assert_select "table tr td", "#{@player.total_points}"
     end
     
   end

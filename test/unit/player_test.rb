@@ -3,7 +3,8 @@ require 'test_helper'
 class PlayerTest < ActiveSupport::TestCase
 
   setup do
-    @player = Factory(:player)
+    @gus = Factory(:player)
+    @dan = Factory(:player_2)
   end
 
   should have_db_column :first_name
@@ -15,21 +16,36 @@ class PlayerTest < ActiveSupport::TestCase
 
   should "have a full name method which is the concatenated first and last names" do
     assert_respond_to Player.new, :full_name
-    assert_equal "#{@player.first_name} #{@player.last_name}", @player.full_name
+    assert_equal "#{@gus.first_name} #{@gus.last_name}", @gus.full_name
   end
 
   should "initially have no Games" do
-    assert_equal 0, @player.games.count
-  end
-  
-  should "be able to assign a Game to a Player" do
-    g = Factory(:game)
-    @player.games << g
-    assert_equal 1, @player.games.count
+    assert_equal 0, @gus.games.count
   end
   
   should "display itself as {first_name} {last_name} by default" do
-    assert_equal "#{@player.first_name} #{@player.last_name}", "#{@player}"
+    assert_equal "#{@gus.first_name} #{@gus.last_name}", "#{@gus}"
+  end
+
+  should "be able to assign a Game to a Player" do
+    g = Factory(:game)
+    @gus.games << g
+    assert_equal 1, @gus.games.count
+  end
+  
+  should "total point over all Games" do
+    g = Factory(:game)
+    r1 = Result.create :game => g, :player => @dan, :place => 1 
+    r2 = Result.create :game => g, :player => @gus, :place => 2 
+    assert_equal 28.44, @dan.total_points
+    assert_equal 20.11, @gus.total_points
+  end
+
+  should "sort Players by their total points" do
+    g = Factory(:game)
+    r1 = Result.create :game => g, :player => @dan, :place => 1 
+    r2 = Result.create :game => g, :player => @gus, :place => 2 
+    assert @dan <=> @gus
   end
 
 end

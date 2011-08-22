@@ -1,6 +1,6 @@
 <table border="1" cellpadding="5" cellspacing="1">
   <tr>
-    <th>Player #</th>
+    <th>Total Points</th>
     <th>First Name</th>
     <th>Last Name</th>
     <th>Email</th>
@@ -10,7 +10,7 @@
 
 <% @players.each do |player| %>
   <tr>
-    <td><%= player.id %></td>
+    <td><%= player.total_points %></td>
     <td><%= player.first_name %></td>
     <td><%= player.last_name %></td>
     <td><%= player.email %></td>

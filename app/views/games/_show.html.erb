@@ -15,7 +15,7 @@
       <i>None</i>
     <% else %>
       <table border="0" cellpadding="3" cellspacing="3">
-        <% for gp in @game.game_players %>
+        <% for gp in @game.results %>
         <tr>
           <td><%= gp.place %>.</td>
           <td><%= link_to "#{gp.player}", player_path(gp.player) %></td>

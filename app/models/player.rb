@@ -1,7 +1,7 @@
 class Player < ActiveRecord::Base
 
-  has_many :game_players, :dependent => :restrict, :order => "place"
-  has_many :games, :through => :game_players, :order => "place"
+  has_many :results, :dependent => :restrict, :order => "place"
+  has_many :games, :through => :results, :order => "place"
 
   def full_name
     return "#{self.first_name} #{self.last_name}"

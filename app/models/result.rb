@@ -1,4 +1,4 @@
-class GamePlayer < ActiveRecord::Base
+class Result < ActiveRecord::Base
 
   acts_as_list :scope => :game, :column => "place"
 

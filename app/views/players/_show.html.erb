@@ -24,12 +24,12 @@
     <th>Game</th>
     <th>Place</th>
   </tr>
-<%   for played_game in @player.game_players %>
+<%   for result in @player.results %>
   <tr>
-    <td><%= link_to "Match ##{played_game.game.match.id} on #{played_game.game.match.match_date}", match_path(played_game.game.match) %></li>
-    <td><%= link_to "#{played_game.game.name}", game_path(played_game.game.id) %></td>
-    <td><%= played_game.place %></td>
-  </ul>
+    <td><%= link_to "Match ##{result.game.match.id} on #{result.game.match.match_date}", match_path(result.game.match) %></td>
+    <td><%= link_to "#{result.game.name}", game_path(result.game.id) %></td>
+    <td><%= result.place %></td>
+  </tr>
 <%   end %>
 </table>
 <% end %>

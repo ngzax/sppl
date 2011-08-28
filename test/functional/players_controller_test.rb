@@ -38,23 +38,42 @@ class PlayersControllerTest < ActionController::TestCase
   # Show
   # -------------------------------------------------------------------
   context "When showing a single Player" do
-    setup do
-      get :show, :id => @player.to_param
-      assert_response :success
+    context "Who has no Games" do
+      setup do
+        get :show, :id => @player.to_param
+        assert_response :success
+      end
+
+      should "use the show template" do
+        assert_template :show
+      end
+      
+      should "Correctly display the Header" do
+        assert_select "h3", "Showing a Player"
+      end
+
+      should "Have a Details and a Games Played sections" do
+        assert_select "h5", "Details"
+        assert_select "h5", "Games Played"
+      end
+
+      should "Display 'None' in italic if the players has not played any Games" do
+        assert_select "i", "None"
+      end
     end
 
-    should "use the show template" do
-      assert_template :show
+    context "Who has a Game" do
+      should "display a link back to the associated Games the Player has played" do
+        @m = Factory(:match)
+        @g = Factory(:game)
+        @m.games << @g
+        @m.save
+        @player.games << @g 
+        @player.save
+        get :show, :id => @player.id
+        assert_select "td a[href=?]", "/games/#{@g.id}"#, :text => @g.to_s
+      end
     end
-    
-    should "Correctly display the Header" do
-      assert_select "h3", "Showing a Player"
-    end
-
-#    should "display a link back to the associated Match" do
-#      assert_select "a", @player.full_name
-#    end
-
   end
 
   # -------------------------------------------------------------------

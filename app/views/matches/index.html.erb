@@ -1,19 +1,35 @@
 <table border="1" cellpadding="5" cellspacing="1">
   <tr>
+    <th>Season</th>
     <th>Match Date</th>
     <th colspan="3">Actions</th>
   </tr>
-
-<% @matches.each do |match| %>
+<%
+  Season.all.each do |season|
+    if !season.matches.empty?
+%>
   <tr>
+  <td rowspan="<%= season.matches.count %>"><%= season %></td>
+<%
+      season.matches.each { |match| 
+%>
     <td><%= match.match_date %></td>
     <td><%= link_to 'Show', match %></td>
     <td><%= link_to 'Edit', edit_match_path(match) %></td>
     <td><%= link_to 'Destroy', match, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
-<% end %>
+<%
+      }
+    else
+%>
+  <tr>
+    <td><%= season %></td>
+    <td colspan="4">No Matches</td>
+  </tr>
+<%
+    end 
+  end
+%>
 </table>
-
 <br />
-
 <%= link_to 'Add a New Match', new_match_path %>

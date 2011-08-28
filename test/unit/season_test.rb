@@ -12,4 +12,9 @@ class SeasonTest < ActiveSupport::TestCase
     assert_respond_to Season.new, :name
   end
   
+  should "display itself as 'Season #ordinal' by default" do
+    @s = Factory(:season)
+    assert_equal "Season ##{@s.ordinal}", "#{@s}"
+  end
+
 end

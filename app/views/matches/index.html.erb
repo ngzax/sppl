@@ -1,8 +1,8 @@
 <table border="1" cellpadding="5" cellspacing="1">
   <tr>
     <th>Season</th>
-    <th>Match Date</th>
-    <th colspan="3">Actions</th>
+    <th>Match</th>
+    <th colspan="2">Actions</th>
   </tr>
 <%
   Season.all.each do |season|
@@ -13,10 +13,11 @@
 <%
       season.matches.each { |match| 
 %>
-    <td><%= match.match_date %></td>
-    <td><%= link_to 'Show', match %></td>
-    <td><%= link_to 'Edit', edit_match_path(match) %></td>
-    <td><%= link_to 'Destroy', match, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to "#{match.match_date}", match %></td>
+    <td>
+      <%= link_to "Change", edit_match_path(match) %>&nbsp;/
+      <%= link_to "Remove", match, :confirm => "Are you sure?", :method => :delete %>
+    </td>
   </tr>
 <%
       }
@@ -32,4 +33,4 @@
 %>
 </table>
 <br />
-<%= link_to 'Add a New Match', new_match_path %>
+<%= link_to "Add a New Match", new_match_path %>

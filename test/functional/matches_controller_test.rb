@@ -30,8 +30,9 @@ class MatchesControllerTest < ActionController::TestCase
       assert_tag :tag => "a", :content => "Add a New Match", :attributes => {:href => new_match_path}
     end
 
-    should "Use Match Date as Headers" do
-      assert_select "table tr th", "Match Date"
+    should "Have the proper Headers" do
+      assert_select "table tr th", "Season"
+      assert_select "table tr th", "Match"
     end
 
     should "Properly display the Match's Name, Start Year, and Stop Year" do

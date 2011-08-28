@@ -3,21 +3,24 @@
     <th>Name</th>
     <th>Start Year</th>
     <th>Stop Year</th>
-    <th colspan="3">Actions</th>
+    <th># of Matches</th>
+    <th>Actions</th>
   </tr>
 
 <% @seasons.each do |season| %>
   <tr>
-    <td>Season <%= season.ordinal %></td>
-    <td><%= season.start_year %></td>
-    <td><%= season.stop_year %></td>
-    <td><%= link_to 'Show', season %></td>
-    <td><%= link_to 'Edit', edit_season_path(season) %></td>
-    <td><%= link_to 'Destroy', season, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to "#{season}", season %></td>
+    <td align="right"><%= season.start_year %></td>
+    <td align="right"><%= season.stop_year %></td>
+    <td align="right"><%= season.matches.count %></td>
+    <td>
+      <%= link_to "Change", edit_season_path(season) %>&nbsp;/
+      <%= link_to "Remove", season, :confirm => "Are you sure?", :method => :delete %>
+    </td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'Add a New Season', new_season_path %>
+<%= link_to "Add a New Season", new_season_path %>

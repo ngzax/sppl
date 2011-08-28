@@ -33,7 +33,7 @@ class SeasonsControllerTest < ActionController::TestCase
     end
 
     should "Properly display the Season's Name, Start Year, and Stop Year" do
-      assert_select "table tr td", "Season #{@season.ordinal}"
+      assert_select "table tr td", "#{@season}"
       assert_select "table tr td", "#{@season.start_year}"
       assert_select "table tr td", "#{@season.stop_year}"
     end

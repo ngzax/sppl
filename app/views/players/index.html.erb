@@ -1,23 +1,31 @@
 <table border="1" cellpadding="5" cellspacing="1">
   <tr>
+    <th>Place</th>
     <th>Player</th>
     <th>Total Points</th>
     <th>Games Played</th>
-    <th colspan="3">Actions</th>
+    <th>Actions</th>
   </tr>
-
-<% @players.each do |player| %>
+<%
+  i = 1
+  @players.each do |player| 
+%>
   <tr>
-    <td><%= player.full_name %></td>
-    <td><%= player.total_points %></td>
-    <td><%= player.games.count %></td>
-    <td><%= link_to 'Show', player %></td>
-    <td><%= link_to 'Edit', edit_player_path(player) %></td>
-    <td><%= link_to 'Destroy', player, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= i %></td>
+    <td><%= link_to("#{player.full_name}", player) %></td>
+    <td align="right"><%= player.total_points %></td>
+    <td align="right"><%= player.games.count %></td>
+    <td>
+      <%= link_to "Edit", edit_player_path(player) %>&nbsp;/
+      <%= link_to "Destroy", player, :confirm => "Are you sure?", :method => :delete %>
+    </td>
   </tr>
-<% end %>
+<%
+    i += 1
+  end 
+%>
 </table>
 
 <br />
 
-<%= link_to 'Add a New Player', new_player_path %>
+<%= link_to "Add a New Player", new_player_path %>

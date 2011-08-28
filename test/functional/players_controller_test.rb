@@ -20,7 +20,15 @@ class PlayersControllerTest < ActionController::TestCase
       assert_not_nil assigns(:players)
     end
 
-    should "provide a link to add a new Player" do
+    should "display the Player's full name" do
+      assert_select "table tr td", @player.full_name
+    end
+
+    should "link the Player's full name to the Show action" do
+      assert_tag :tag => "a", :content => "#{@player.full_name}", :attributes => {:href => player_path(@player.id)}
+    end
+
+    should "Provide a link to add a new Player" do
       assert_tag :tag => "a", :content => "Add a New Player", :attributes => {:href => new_player_path}
     end
 

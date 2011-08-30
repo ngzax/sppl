@@ -1,22 +1,38 @@
 <table border="1" cellpadding="5" cellspacing="1">
   <tr>
-    <th>Id</th>
     <th>Match</th>
     <th>Game #</th>
     <th>Player Count</th>
     <th colspan="3">Actions</th>
   </tr>
-<% @games.sort.each do |game| %>
+<%
+  Match.all.each do |match|
+    if !match.games.empty?
+%>
   <tr>
-    <td><%= game.id %></td>
-    <td><%= link_to game.match.match_date, match_path(game.match) %></td>
-    <td><%= game.ordinal %></td>
-    <td><%= game.players.count %></td>
-    <td><%= link_to 'Show', game %></td>
-    <td><%= link_to 'Edit', edit_game_path(game) %></td>
-    <td><%= link_to 'Destroy', game, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td rowspan="<%= match.games.count %>"><%= link_to "#{match}", match %></td>
+<%
+      match.games.sort.each { |game| 
+%>
+    <td align="right"><%= link_to "#{game.ordinal}", game %></td>
+    <td align="right"><%= game.players.count %></td>
+    <td>
+      <%= link_to "Change", edit_game_path(match) %>&nbsp;/
+      <%= link_to "Remove", game, :confirm => "Are you sure?", :method => :delete %>
+    </td>
   </tr>
-<% end %>
+<%
+      }
+    else
+%>
+  <tr>
+    <td><%= link_to "#{match}", match %></td>
+    <td colspan="4">No Games</td>
+  </tr>
+<%
+    end 
+  end
+%>
 </table>
 <br />
 <%= link_to 'Add a New Game', new_game_path %>

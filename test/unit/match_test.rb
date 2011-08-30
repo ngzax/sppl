@@ -9,9 +9,9 @@ class MatchTest < ActiveSupport::TestCase
 
   should have_many :games
 
-  should "display itself as 'Match on {match_date}' by default" do
+  should "display itself as '{match_date}' by default" do
     @m = Factory(:match)
-    assert_equal "Match on #{@m.match_date}", "#{@m}"
+    assert_equal "#{@m.match_date}", "#{@m}"
   end
 
 end

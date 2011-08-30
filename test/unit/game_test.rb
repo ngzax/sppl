@@ -26,8 +26,8 @@ class GameTest < ActiveSupport::TestCase
     assert_equal 1, @game.players.count
   end
   
-  should "display itself as Game #(ordinal) [Match] by default" do
-    assert_equal "Game ##{@game.ordinal} [#{@game.match}]", "#{@game}"
+  should "display itself as #(ordinal) by default" do
+    assert_equal "#{@game.ordinal}", "#{@game}"
   end
 
   context "when sorting Games" do

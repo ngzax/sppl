@@ -26,9 +26,9 @@
   </tr>
 <%   for result in @player.results %>
   <tr>
-    <td><%= link_to "Match ##{result.game.match.id} on #{result.game.match.match_date}", match_path(result.game.match) %></td>
-    <td><%= link_to "#{result.game.name}", game_path(result.game.id) %></td>
-    <td><%= result.place %></td>
+    <td><%= link_to "#{result.game.match}", match_path(result.game.match) %></td>
+    <td align="right"><%= link_to "#{result.game.ordinal}", game_path(result.game) %></td>
+    <td align="right"><%= result.place %></td>
   </tr>
 <%   end %>
 </table>

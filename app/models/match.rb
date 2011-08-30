@@ -3,7 +3,7 @@ class Match < ActiveRecord::Base
   has_many :games
 
   def to_s
-    "Match on #{self.match_date}"
+    "#{self.match_date}"
   end
 
 end

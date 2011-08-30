@@ -24,7 +24,7 @@ class Game < ActiveRecord::Base
   end
 
   def to_s
-    "#{name} [#{match}]"
+    "#{ordinal}"
   end
 
 end

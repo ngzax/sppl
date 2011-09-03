@@ -1,5 +1,6 @@
+<div id="ViewerCompressed">
 <h5>Details</h5>
-<table border="1" cellpadding="5" cellspacing="1">
+<table>
   <tr>
     <th>Player</th>
     <td><%= @player.full_name %></td>
@@ -18,7 +19,7 @@
 <% if @player.games.empty? %>
 <i>None</i>
 <% else %>
-<table border="1" cellpadding="5" cellspacing="1">
+<table>
   <tr>
     <th>Match</th>
     <th>Game</th>
@@ -27,10 +28,11 @@
 <%   for result in @player.results %>
   <tr>
     <td><%= link_to "#{result.game.match}", match_path(result.game.match) %></td>
-    <td align="right"><%= link_to "#{result.game.ordinal}", game_path(result.game) %></td>
-    <td align="right"><%= result.place %></td>
+    <td class="numeric"><%= link_to "#{result.game.ordinal}", game_path(result.game) %></td>
+    <td class="numeric"><%= result.place %></td>
   </tr>
 <%   end %>
 </table>
 <% end %>
+</div>
 <p/>

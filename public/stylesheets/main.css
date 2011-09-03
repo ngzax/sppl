@@ -211,38 +211,43 @@
 #Viewer table {
    background-color : white;
    border           : 0px solid;
-   margin-top       : 10px;
-   margin-bottom    : 10px;
-   width            : 100%;
+   margin-top       : 8px;
+   margin-bottom    : 8px;
+   width            : 90%;
 }
 
 #Viewer td {
-   border        : 1px solid;
+  border        : 1px solid;
 	border-left   : 0px;
 	border-right  : 0px;
 	border-top    : 0px;
-   padding       : 5px 5px 5px 5px;
+  padding       : 5px 5px 5px 5px;
 	text-align    : left;
 }
 
 #Viewer td.actions {
-   text-align : center;
+  text-align : center;
+	width      : 20%;
+}
+
+#Viewer td.numeric {
+  text-align : right;
 	width      : 20%;
 }
 
 #Viewer td.link {
-   text-align : center;
+  text-align : center;
 }
 
 #Viewer th {
-   background-color : LightGrey;
-   border           : 0px solid;
-   padding          : 3px 3px 3px 3px;
-   text-align       : left;
+  background-color : #EE8A52;
+  border           : 0px solid;
+  padding          : 3px 3px 3px 3px;
+  text-align       : left;
 }
 
 #Viewer th.actions {
-   text-align : center;
+  text-align : center;
 	width      : 20%;
 }
 
@@ -271,10 +276,14 @@
    text-align : center;
 }
 
+#ViewerCompressed td.numeric {
+   text-align : right;
+}
+
 #ViewerCompressed th {
-   background-color : LightGrey;
+   background-color : #EE8A52;
    border           : 0px solid;
-   padding          : 1px 1px 1px 1px;
+   padding          : 3px 3px 3px 3px;
    text-align       : left;
 }
 

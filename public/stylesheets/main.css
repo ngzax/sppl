@@ -51,11 +51,11 @@
 }
 
 #Editor th {
-	background-color : silver;
+	background-color : #EE8A52;
 	border           : 0px;
-   padding          : 3px;
-   text-align       : right;
-   width            : 15%;
+  padding          : 3px;
+  text-align       : right;
+  width            : 15%;
 }
 
 #Header {

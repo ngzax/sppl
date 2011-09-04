@@ -1,8 +1,8 @@
+<div id="Editor">
 <%= form_for(@game) do |f| %>
   <% if @game.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@game.errors.count, "error") %> prohibited this Game from being saved:</h2>
-
       <ul>
       <% @game.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -37,3 +37,4 @@
     <%= f.submit %>
   </div>
 <% end %>
+</div>

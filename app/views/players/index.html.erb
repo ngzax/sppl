@@ -5,7 +5,7 @@
       <th>Player</th>
       <th>Total Points</th>
       <th>Games Played</th>
-        <th class="actions">Actions</th>
+      <th class="actions">Actions</th>
     </tr>
   <%
     i = 1
@@ -17,8 +17,8 @@
       <td class="numeric"><%= player.total_points %></td>
       <td class="numeric"><%= player.games.count %></td>
       <td class="actions">
-        <%= link_to "Edit", edit_player_path(player) %>&nbsp;/
-        <%= link_to "Destroy", player, :confirm => "Are you sure?", :method => :delete %>
+        <%= link_to "Change", edit_player_path(player) %>&nbsp;/
+        <%= link_to "Remove", player, :confirm => "Are you sure?", :method => :delete %>
       </td>
     </tr>
   <%

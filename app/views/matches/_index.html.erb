@@ -1,8 +1,8 @@
-<table border="1" cellpadding="5" cellspacing="1">
+<table>
   <tr>
     <th>Season</th>
     <th>Match</th>
-    <th colspan="2">Actions</th>
+    <th class="actions">Actions</th>
   </tr>
 <%
   Season.all.each do |season|
@@ -14,7 +14,7 @@
       season.matches.each { |match| 
 %>
     <td><%= link_to "#{match}", match %></td>
-    <td>
+    <td class="actions">
       <%= link_to "Change", edit_match_path(match) %>&nbsp;/
       <%= link_to "Remove", match, :confirm => "Are you sure?", :method => :delete %>
     </td>
@@ -32,5 +32,5 @@
   end
 %>
 </table>
-<br />
+<p/>
 <%= link_to "Add a New Match", new_match_path %>

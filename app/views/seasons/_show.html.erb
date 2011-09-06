@@ -1,5 +1,4 @@
-<p/>
-<table border="1" cellpadding="5" cellspacing="3">
+<table>
   <tr>
     <th>Name:</th>
     <td>Season <%= @season.ordinal %></td>
@@ -14,8 +13,7 @@
     </td>
   </tr>
   <tr>
-    <th>Actions</th>
-    <td><%= link_to "Add a Match", :action => 'new_match', :id => @season.id %></td>
+    <th class="actions">Actions</th>
+    <td class="actions"><%= link_to "Add a Match", :action => 'new_match', :id => @season.id %></td>
   </tr>
 </table>
-<p/>

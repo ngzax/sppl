@@ -5,10 +5,7 @@
   font-family    : Tahoma, Verdana, Arial, Helvetica, sans-serif;
   font-size      : 50%;
   margin-top     : 100px;
-  padding-top    : 1px;
-  padding-right  : 1px;
-  padding-left   : 1px;
-  padding-bottom : 1px;
+  padding        : 1px 1px 1px 1px;
   position       : relative; right: 1px; bottom: 1px; left: 1px;
   text-align     : center;
   width          : 99%;
@@ -210,17 +207,14 @@
 
 #Viewer table {
    background-color : white;
-   border           : 0px solid;
+   border           : 0px;
    margin-top       : 8px;
    margin-bottom    : 8px;
    width            : 90%;
 }
 
 #Viewer td {
-  border        : 1px solid;
-	border-left   : 0px;
-	border-right  : 0px;
-	border-top    : 0px;
+  border        : 1px ridge;
   padding       : 5px 5px 5px 5px;
 	text-align    : left;
 }
@@ -241,7 +235,7 @@
 
 #Viewer th {
   background-color : #EE8A52;
-  border           : 0px solid;
+  border           : 0px;
   padding          : 3px 3px 3px 3px;
   text-align       : left;
 }
@@ -251,19 +245,17 @@
 	width      : 20%;
 }
 
+
 #ViewerCompressed table {
-   background-color : white;
-   border           : 0px solid;
-   margin-top       : 8px;
-   margin-bottom    : 8px;
+  background-color : white;
+  border           : 0px ridge;
+  margin-top       : 8px;
+  margin-bottom    : 8px;
 }
 
 #ViewerCompressed td {
-  border        : 1px solid;
-	border-left   : 0px;
-	border-right  : 0px;
-	border-top    : 0px;
-   padding       : 3px 3px 3px 3px;
+  border        : 1px ridge;
+  padding       : 3px 3px 3px 3px;
 	text-align    : left;
 }
 
@@ -282,7 +274,7 @@
 
 #ViewerCompressed th {
    background-color : #EE8A52;
-   border           : 0px solid;
+   border           : 0px;
    padding          : 3px 3px 3px 3px;
    text-align       : left;
 }

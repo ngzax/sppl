@@ -1,0 +1,29 @@
+<table>
+  <tr>
+    <th>Place</th>
+    <th>Player</th>
+    <th>Total Points</th>
+    <th>Games Played</th>
+    <th class="actions">Actions</th>
+  </tr>
+<%
+  i = 1
+  @players.each do |player| 
+%>
+  <tr>
+    <td><%= i %></td>
+    <td><%= link_to("#{player.full_name}", player) %></td>
+    <td class="numeric"><%= player.total_points %></td>
+    <td class="numeric"><%= player.games.count %></td>
+    <td class="actions">
+      <%= link_to "Change", edit_player_path(player) %>&nbsp;/
+      <%= link_to "Remove", player, :confirm => "Are you sure?", :method => :delete %>
+    </td>
+  </tr>
+<%
+    i += 1
+  end 
+%>
+</table>
+<p/>
+<%= link_to "Add a New Player", new_player_path %>

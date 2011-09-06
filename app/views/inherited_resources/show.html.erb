@@ -1,5 +1,7 @@
-<h3>Showing a <%= params[:controller].singularize.titleize %></h3>
-<p id="notice"><%= notice %></p>
-<%= render :partial => "show" %> 
-<%= link_to "Edit", edit_resource_path(@season) %> |
-<%= link_to 'View All', {:controller => params[:controller], :action => :index} %>
+<div id="ViewerCompressed">
+  <h3>Showing a <%= params[:controller].singularize.titleize %></h3>
+  <p id="notice"><%= notice %></p>
+  <%= render :partial => "show" %> 
+  <%= link_to "Edit", edit_resource_path(@season) %> |
+  <%= link_to 'View All', {:controller => params[:controller], :action => :index} %>
+</div>

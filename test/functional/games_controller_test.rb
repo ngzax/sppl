@@ -88,7 +88,7 @@ class GamesControllerTest < ActionController::TestCase
     end
     
     should "Correctly display the Header" do
-      assert_select "h1", "Creating a New Game"
+      assert_select "h1", "Creating a Game"
     end
 
     should "Show that we can enter Ordinal" do

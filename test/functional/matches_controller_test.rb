@@ -93,7 +93,7 @@ class MatchesControllerTest < ActionController::TestCase
     end
     
     should "Correctly display the Header" do
-      assert_select "h1", "Creating a New Match"
+      assert_select "h1", "Creating a Match"
     end
 
     should "Show that we can enter Ordinal, Start Year, and Stop Year" do

@@ -26,5 +26,5 @@ Sppl::Application.routes.draw do
     end
   end
 
-  root :to => "seasons#index"
+  root :to => "players#index"
 end

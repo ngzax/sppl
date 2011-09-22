@@ -9,14 +9,6 @@ module ApplicationHelper
     "SPPL"
   end
 
-  def ApplicationHelper.Version
-    "0"
-  end
-
-  def ApplicationHelper.Copyright
-    "Copyright 2011 Data-based Design, LLC && JEM, LLC.  All Rights Reserved."
-  end
-
   # Returns the text of the main menu markup (XML).
   def resource_menu
     xml = Builder::XmlMarkup.new

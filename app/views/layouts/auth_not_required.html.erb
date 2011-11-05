@@ -29,20 +29,14 @@
           <%= textilize_without_paragraph(flash[:status]) %>
         </div>
       <% end %>
-      <% if current_user %>
-        <%= yield %>
-      <% else %>
-        <p><%= link_to "Login", :login %></p>
-      <% end %>
+      <%= yield %>
       <!--%= @content_for_layout %-->
     </div>
     <div id="Footer">
+      <p/>
       <div id="BottomBar">
 		    <p>Version 2 :: Copyright 2011 :: <a href="http://databaseddesign.com">Data-based Design, LLC</a> && JEM, LLC :: All Rights Reserved.</p>
       </div>
-      <% if current_user %>
-        <p><%= link_to "Logout", :logout %></p>
-      <% end %>
     </div>
   </body>
 </html>

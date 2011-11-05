@@ -7,7 +7,7 @@ class UserSessionsController < ApplicationController
 
     respond_to do |format|
       if @user_session.save
-        format.html { redirect_to(@user_session, :notice => "Login successful!") }
+        format.html { redirect_to(:root, :notice => "Login successful!") }
         format.xml  { render :xml => @user_session, :status => :created, :location => @user_session }
       else
         format.html { render :action => "new" }
@@ -34,7 +34,7 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new
 
     respond_to do |format|
-      format.html { redirect_to(:root) }
+      format.html { render :layout => "auth_not_required" }
       format.xml  { render :xml => @user_session }
     end
   end

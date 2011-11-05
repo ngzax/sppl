@@ -1,5 +1,7 @@
 Sppl::Application.routes.draw do
   
+  resources :users
+
   resources :games do
     member do
       get :choose_players

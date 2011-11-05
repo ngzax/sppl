@@ -1,7 +1,5 @@
 Sppl::Application.routes.draw do
   
-  resources :users
-
   resources :games do
     member do
       get :choose_players
@@ -27,6 +25,8 @@ Sppl::Application.routes.draw do
       get :new_match
     end
   end
+
+  resources :users
 
   root :to => "players#index"
 end

@@ -26,7 +26,12 @@ Sppl::Application.routes.draw do
     end
   end
 
+  resources :user_sessions
+  
   resources :users
+ 
+  match 'login' => 'user_sessions#new', :as => :login
+  match 'logout' => 'user_sessions#destroy', :as => :logout
 
   root :to => "players#index"
 end

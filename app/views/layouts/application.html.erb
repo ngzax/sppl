@@ -21,12 +21,12 @@
     <div id="Content">
       <% if flash[:error] %>
         <div id="SystemError">
-          <%= textilize_without_paragraph(flash[:error]) %>
+          <%= flash[:error] %>
         </div>
       <% end %>
       <% if flash[:status] %>
         <div id="SystemStatus">
-          <%= textilize_without_paragraph(flash[:status]) %>
+          <%= flash[:status] %>
         </div>
       <% end %>
       <% if current_user %>

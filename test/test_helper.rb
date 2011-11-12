@@ -24,14 +24,18 @@ class ActionController::TestCase
     @current_user_session ||= UserSession.find
   end
 
-  def sign_in_user
+  def sign_in_as_admin
+    @user = Factory(:admin)
+    UserSession.create(@user)
+  end
+
+  def sign_in_as_player
     @user = Factory(:user)
     UserSession.create(@user)
   end
 
-  def sign_in_admin
-    @user = Factory.create(:user)
-    @user.update_attributes(:roles_list => "admin")
+  def sign_in_user
+    @user = Factory(:user)
     UserSession.create(@user)
   end
 

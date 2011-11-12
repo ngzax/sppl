@@ -7,7 +7,7 @@ class GamesControllerTest < ActionController::TestCase
     @match = Factory(:match)
     @game.match_id = @match.id
     @game.save
-    sign_in_user
+    sign_in_as_player
   end
   
   # -------------------------------------------------------------------

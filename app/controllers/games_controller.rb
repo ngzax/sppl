@@ -1,5 +1,6 @@
 class GamesController < InheritedResources::Base
   actions :destroy, :show
+  before_filter :require_user
   
   def create
     @game = Game.new(params[:game])

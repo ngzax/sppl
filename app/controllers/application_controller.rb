@@ -14,5 +14,21 @@ class ApplicationController < ActionController::Base
     return @current_user if defined?(@current_user)
     @current_user = current_user_session && current_user_session.record
   end
-  
+
+  def require_admin
+    unless current_user && current_user.username == "admin"
+      flash[:error] = "You must be an administrator to access that capability"
+      redirect_to :root
+      return false
+    end
+  end
+
+  def require_user
+    unless current_user
+      flash[:error] = "You must be logged in to access this page"
+      redirect_to :root
+      return false
+    end
+  end
+     
 end

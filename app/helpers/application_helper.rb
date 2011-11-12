@@ -28,4 +28,9 @@ module ApplicationHelper
     html_opts = (resource_selected?(resource)) ? {"class" => "selected"} : {}
     link_to(label, {:controller => resource, :action => "index"}, html_opts) 
   end
+
+  def set_focus(id)
+    javascript_tag("$('#{id}').focus()")
+  end
+  
 end

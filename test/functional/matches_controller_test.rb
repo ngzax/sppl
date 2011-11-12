@@ -7,6 +7,7 @@ class MatchesControllerTest < ActionController::TestCase
     @season = Factory(:season)
     @match.season_id = @season.id
     @match.save
+    sign_in_user
   end
   
   # -------------------------------------------------------------------

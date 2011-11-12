@@ -6,6 +6,7 @@ class SeasonsControllerTest < ActionController::TestCase
     @season = Factory(:season)
     @match = Factory(:match)
     @season.matches << @match
+    sign_in_user
   end
   
   context "When showing ALL the Seasons in HTML" do

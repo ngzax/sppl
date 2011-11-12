@@ -4,6 +4,7 @@ class PlayersControllerTest < ActionController::TestCase
   
   setup do
     @player = Factory(:player)
+    sign_in_user
   end
   
   context "When showing ALL the Players in HTML" do

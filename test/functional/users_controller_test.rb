@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
   setup do
-    @user = users(:one)
+    sign_in_user
   end
 
   test "should get index" do
@@ -16,9 +16,9 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create user" do
+  should "be able to Create a User" do
     assert_difference('User.count') do
-      post :create, :user => @user.attributes
+      post :create, :user => {:username => "Tester", :password => "testy", :password_confirmation => "testy"}
     end
 
     assert_redirected_to user_path(assigns(:user))

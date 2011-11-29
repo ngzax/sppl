@@ -16,10 +16,10 @@ end
 class ActionController::TestCase
   setup :activate_authlogic
 
-  def current_user
-    @user
-  end
-
+#  def current_user
+#    @user
+#  end
+#
   def current_user_session
     @current_user_session ||= UserSession.find
   end
@@ -30,11 +30,6 @@ class ActionController::TestCase
   end
 
   def sign_in_as_player
-    @user = Factory(:user)
-    UserSession.create(@user)
-  end
-
-  def sign_in_user
     @user = Factory(:user)
     UserSession.create(@user)
   end

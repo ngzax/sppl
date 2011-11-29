@@ -4,7 +4,7 @@ class PlayersControllerTest < ActionController::TestCase
   
   setup do
     @player = Factory(:player)
-    sign_in_user
+    sign_in_as_player
   end
   
   context "When showing ALL the Players in HTML" do
@@ -29,10 +29,6 @@ class PlayersControllerTest < ActionController::TestCase
       assert_tag :tag => "a", :content => "#{@player.full_name}", :attributes => {:href => player_path(@player.id)}
     end
 
-    should "Provide a link to add a new Player" do
-      assert_tag :tag => "a", :content => "Add a New Player", :attributes => {:href => new_player_path}
-    end
-
     should "Use Player Total Points as a Header" do
       assert_select "table tr th", "Total Points"
     end
@@ -41,6 +37,32 @@ class PlayersControllerTest < ActionController::TestCase
       assert_select "table tr td", "#{@player.total_points}"
     end
     
+    should "NOT show the Actions column and links" do
+      assert_no_tag :tag => "a", :content => "Change", :attributes => {:href => edit_player_path(@player.id)}
+      assert_no_tag :tag => "a", :content => "Remove"
+    end
+
+    should "NOT show the link to add a new Player" do
+      assert_no_tag :tag => "a", :content => "Add a New Player", :attributes => {:href => new_player_path}
+    end
+
+  end
+
+  context "AND logged in as Admin" do
+    setup do
+      sign_in_as_admin
+      get :index
+    end
+
+    should "show the link to add a new Player" do
+      assert_tag :tag => "a", :content => "Add a New Player", :attributes => {:href => new_player_path}
+    end
+    
+    should "show the Actions column and links" do
+      assert_tag :tag => "a", :content => "Change", :attributes => {:href => edit_player_path(@player.id)}
+      assert_tag :tag => "a", :content => "Remove"
+    end
+
   end
 
   # -------------------------------------------------------------------

@@ -16,8 +16,10 @@
       <% if @match.games.empty? %><i>None</i><% end %>
     </td>
   </tr>
+<% if changes_allowed? %>
   <tr>
     <th>Actions</th>
     <td><%= link_to "Add a Game", :action => 'new_game', :id => @match.id %></td>
   </tr>
+<% end %>
 </table>

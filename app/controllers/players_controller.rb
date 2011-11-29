@@ -1,4 +1,5 @@
 class PlayersController < InheritedResources::Base
+
   actions :create, :destroy, :edit, :new, :show, :update
   
   def index

@@ -20,6 +20,7 @@
             <td><%= gp.place %>.</td>
             <td><%= link_to "#{gp.player}", player_path(gp.player) %></td>
             <td>(<%= gp.points %>)</td>
+<% if changes_allowed? %>
             <td>
           <% unless gp.place == 1 %> 
             <%= link_to "[up]", {:controller => :players, :action => 'move', :method => 'move_higher', :game_player_id => gp.id} %> 
@@ -28,15 +29,18 @@
             <%= link_to "[down]", {:controller => :players, :action => 'move', :method => 'move_lower', :game_player_id => gp.id} %> 
           <% end %>
             </td>
+<% end %>
           </tr>
         <% end %>
         </table>
         <% end %>
       </td>
     </tr>
+<% if changes_allowed? %>
     <tr>
       <th>Actions</th>
       <td><%= link_to "Choose Players", :action => :edit, :id => @game.id %></td>
     </tr>
+<% end %>
   </table>
 </div>

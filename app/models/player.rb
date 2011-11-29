@@ -1,6 +1,6 @@
 class Player < ActiveRecord::Base
 
-  has_many :results, :dependent => :restrict, :order => "place"
+  has_many :results, :dependent => :restrict
   has_many :games, :through => :results, :order => "place"
 
   def <=>(another_player)
@@ -11,13 +11,22 @@ class Player < ActiveRecord::Base
     return "#{self.first_name} #{self.last_name}"
   end
 
+  def non_scoring_results
+    self.results - self.scoring_results
+  end
+
+  def scoring_results
+    ary = self.results.sort {|x, y| y.points <=> x.points}
+    ary[0..5]
+  end
+
   def to_s
     full_name
   end
 
   def total_points
     return 0 if self.results.nil? 
-    p = self.results.inject(0) {|sum, each| sum + each.points}
+    p = self.scoring_results.inject(0) {|sum, each| sum + each.points}
     p.round(2)
   end
 

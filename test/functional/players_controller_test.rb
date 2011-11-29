@@ -84,8 +84,8 @@ class PlayersControllerTest < ActionController::TestCase
       end
 
       should "Have a Details and a Games Played sections" do
-        assert_select "h5", "Details"
-        assert_select "h5", "Games Played"
+        assert_select "h4", "Details"
+        assert_select "h4", "Games Played"
       end
 
       should "Display 'None' in italic if the players has not played any Games" do

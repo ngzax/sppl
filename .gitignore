@@ -1,6 +1,7 @@
 .DS_Store
 .bundle
 .rvmrc
+*.dat
 db/*.sqlite3
 log/*.log
 tmp/

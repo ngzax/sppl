@@ -38,10 +38,10 @@ GEM
     erubis (2.6.6)
       abstract (>= 1.0.0)
     excon (0.16.1)
-    factory_girl (4.0.0)
-      activesupport (>= 3.0.0)
-    factory_girl_rails (4.0.0)
-      factory_girl (~> 4.0.0)
+    factory_girl (2.6.3)
+      activesupport (>= 2.3.9)
+    factory_girl_rails (1.7.0)
+      factory_girl (~> 2.6.0)
       railties (>= 3.0.0)
     has_scope (0.5.1)
     heroku (2.30.3)
@@ -122,11 +122,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  acts_as_list
-  authlogic
+  acts_as_list (~> 0.1)
+  authlogic (~> 3.1)
   builder (~> 2.1)
-  factory_girl
-  factory_girl_rails
+  factory_girl (~> 2.6)
+  factory_girl_rails (~> 1.7)
   heroku
   inherited_resources (~> 1.2)
   inherited_resources_views (~> 0.4)

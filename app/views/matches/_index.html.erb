@@ -7,13 +7,12 @@
   </tr>
 <% end %>
 <%
-  Season.all.each do |season|
-    if !season.matches.empty?
+  if !@matches.empty?
 %>
   <tr>
-  <td rowspan="<%= season.matches.count %>"><%= season %></td>
+  <td rowspan="<%= @matches.count %>"><%= @season %></td>
 <%
-      season.matches.each { |match| 
+      @matches.each { |match| 
 %>
     <td><%= link_to "#{match}", match %></td>
 <% if changes_allowed? %>
@@ -28,11 +27,10 @@
     else
 %>
   <tr>
-    <td><%= season %></td>
+    <td><%= @season %></td>
     <td colspan="4">No Matches</td>
   </tr>
 <%
-    end 
   end
 %>
 </table>

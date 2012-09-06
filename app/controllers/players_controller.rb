@@ -4,6 +4,7 @@ class PlayersController < InheritedResources::Base
   
   def index
     @page_title = "All Players"
+    @season = (params[:season_id].nil?) ? Season.find(:last) : Season.find(params["season_id"])
     @players = Player.all.sort.reverse
   end
 

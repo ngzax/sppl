@@ -20,6 +20,10 @@ class Player < ActiveRecord::Base
     ary[0..5]
   end
 
+  def season_games(season_id)
+    self.games.select { |game| game.match.season_id = season_id}
+  end
+
   def to_s
     full_name
   end

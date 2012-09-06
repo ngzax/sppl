@@ -3,8 +3,9 @@ require 'test_helper'
 class GamesControllerTest < ActionController::TestCase
   
   setup do
+    @season = Factory(:season)
+    @match = Factory(:match, :season => @season)
     @game = Factory(:game)
-    @match = Factory(:match)
     @game.match_id = @match.id
     @game.save
     sign_in_as_admin
@@ -23,8 +24,8 @@ class GamesControllerTest < ActionController::TestCase
       assert_template :index
     end
 
-    should "have a Games collection representing all the Games" do
-      assert_not_nil assigns(:games)
+    should "have a Matches collection holding all the Games to be displayed" do
+      assert_not_nil assigns(:matches)
     end
 
     should "provide a link to add a new Game" do

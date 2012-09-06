@@ -8,7 +8,7 @@
 <% end %>
   </tr>
 <%
-  Match.all.each do |match|
+  @matches.each do |match|
     if !match.games.empty?
 %>
   <tr>

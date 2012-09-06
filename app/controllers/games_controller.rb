@@ -1,4 +1,5 @@
 class GamesController < InheritedResources::Base
+
   actions :destroy, :show
   before_filter :require_user
   
@@ -20,7 +21,8 @@ class GamesController < InheritedResources::Base
 
   def index
     @page_title = "Showing All Games"
-    @games = Game.all.sort
+    @season = (params[:season_id].nil?) ? Season.find(:last) : Season.find(params["season_id"])
+    @matches = @season.matches
   end
 
   def new

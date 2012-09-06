@@ -10,7 +10,7 @@
   if !@matches.empty?
 %>
   <tr>
-  <td rowspan="<%= @matches.count %>"><%= @season %></td>
+  <td rowspan="<%= @matches.count %>"><%= link_to @season, season_path(@season.id) -%></td>
 <%
       @matches.each { |match| 
 %>

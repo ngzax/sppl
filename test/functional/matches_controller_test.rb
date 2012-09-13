@@ -39,6 +39,12 @@ class MatchesControllerTest < ActionController::TestCase
     should "Properly display the Match's Name, Start Year, and Stop Year" do
       assert_select "table tr td", "#{@match.match_date}"
     end
+
+    should "be able to pass in a season_id as a filter" do
+      get :index, :season_id => Factory(:season2).id
+      assert_response :success
+      assert_select "table tr td", "No Matches"
+    end
   end
 
   # -------------------------------------------------------------------

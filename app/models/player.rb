@@ -11,17 +11,27 @@ class Player < ActiveRecord::Base
     return "#{self.first_name} #{self.last_name}"
   end
 
-  def non_scoring_results
-    self.results - self.scoring_results
+  def non_scoring_results(season_id)
+    self.season_results(season_id) - self.scoring_results(season_id)
   end
 
-  def scoring_results
-    ary = self.results.sort {|x, y| y.points <=> x.points}
+  def scoring_results(season_id)
+    ary = self.season_results(season_id).sort {|x, y| y.points <=> x.points}
     ary[0..5]
   end
 
   def season_games(season_id)
-    self.games.select { |game| game.match.season_id = season_id}
+    self.season_results(season_id).collect {|result| result.game}
+  end
+
+  def season_results(season_id)
+    self.results.select {|result| result.game.match.season_id == season_id}
+  end
+
+  def season_total_points(season_id)
+    return 0 if self.season_results(season_id).nil? 
+    p = self.scoring_results(season_id).inject(0) {|sum, each| sum + each.points}
+    p.round(2)
   end
 
   def to_s
@@ -29,9 +39,7 @@ class Player < ActiveRecord::Base
   end
 
   def total_points
-    return 0 if self.results.nil? 
-    p = self.scoring_results.inject(0) {|sum, each| sum + each.points}
-    p.round(2)
+    self.season_total_points(Season.find(:last).id)
   end
 
 end

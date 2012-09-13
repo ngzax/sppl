@@ -15,7 +15,7 @@
 </table>
 <p/>
 <h4>Games Played</h4>
-<% if @player.games.empty? %>
+<% if @player.season_games(@season.id).empty? %>
 <i>None</i>
 <% else %>
 <h5>Scoring</h5>
@@ -26,7 +26,7 @@
     <th>Place</th>
     <th>Points</th>
   </tr>
-<%   for result in @player.scoring_results %>
+<%   for result in @player.scoring_results(@season.id) %>
   <tr>
     <td><%= link_to "#{result.game.match}", match_path(result.game.match) %></td>
     <td class="numeric"><%= link_to "#{result.game.ordinal}", game_path(result.game) %></td>
@@ -44,7 +44,7 @@
     <th>Place</th>
     <th>Points</th>
   </tr>
-<%   for result in @player.non_scoring_results %>
+<%   for result in @player.non_scoring_results(@season.id) %>
   <tr>
     <td><%= link_to "#{result.game.match}", match_path(result.game.match) %></td>
     <td class="numeric"><%= link_to "#{result.game.ordinal}", game_path(result.game) %></td>
@@ -54,3 +54,4 @@
 <%   end %>
 </table>
 <% end %>
+<p/>

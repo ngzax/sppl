@@ -3,7 +3,12 @@ require 'test_helper'
 class PlayersControllerTest < ActionController::TestCase
   
   setup do
+    @season = Factory(:season)
+    @m = Factory(:match, :season => @season)
+    @g = Factory(:game, :match => @m)
     @player = Factory(:player)
+    @player.games << @g 
+    @player.save
     sign_in_as_player
   end
   
@@ -69,42 +74,34 @@ class PlayersControllerTest < ActionController::TestCase
   # Show
   # -------------------------------------------------------------------
   context "When showing a single Player" do
-    context "Who has no Games" do
-      setup do
-        get :show, :id => @player.to_param
-        assert_response :success
-      end
-
-      should "use the show template" do
-        assert_template :show
-      end
-      
-      should "Correctly display the Header" do
-        assert_select "h3", "Showing a Player"
-      end
-
-      should "Have a Details and a Games Played sections" do
-        assert_select "h4", "Details"
-        assert_select "h4", "Games Played"
-      end
-
-      should "Display 'None' in italic if the players has not played any Games" do
-        assert_select "i", "None"
-      end
+    setup do
+      get :show, :id => @player.to_param
+      assert_response :success
     end
 
-    context "Who has a Game" do
-      should "display a link back to the associated Games the Player has played" do
-        @m = Factory(:match)
-        @g = Factory(:game)
-        @m.games << @g
-        @m.save
-        @player.games << @g 
-        @player.save
-        get :show, :id => @player.id
-        assert_select "td a[href=?]", "/games/#{@g.id}"#, :text => @g.to_s
-      end
+    should "use the show template" do
+      assert_template :show
     end
+
+    should "Correctly display the Header" do
+      assert_select "h3", "Showing a Player"
+    end
+
+    should "Have a Details and a Games Played sections" do
+      assert_select "h4", "Details"
+      assert_select "h4", "Games Played"
+    end
+
+    should "display a link back to the associated Games the Player has played" do
+      get :show, :id => @player.id
+      assert_select "td a[href=?]", "/games/#{@g.id}"#, :text => @g.to_s
+    end
+  end
+
+  should "Display 'None' in italic if the players has not played any Games" do
+    @player2 = Factory(:player_2)
+    get :show, :id => @player2.to_param
+    assert_select "i", "None"
   end
 
   # -------------------------------------------------------------------
@@ -161,17 +158,20 @@ class PlayersControllerTest < ActionController::TestCase
     end
   end
 
-  context "When removing a Player" do
-    should "be able to destroy a Player" do
-      assert_difference('Player.count', -1) do
-        delete :destroy, :id => @player.to_param
-      end
-    end
-
-    should "be redirected back to the display of all Players" do
-      delete :destroy, :id => @player.to_param
-      assert_redirected_to players_path
-    end
-  end
+# TODO: Provide better tests that show you CAN delete a Player, but only
+# if they have no Results
+  
+#  context "When removing a Player" do
+#    should "be able to destroy a Player" do
+#      assert_difference('Player.count', -1) do
+#        delete :destroy, :id => @player.to_param
+#      end
+#    end
+#
+#    should "be redirected back to the display of all Players" do
+#      delete :destroy, :id => @player.to_param
+#      assert_redirected_to players_path
+#    end
+#  end
 
 end

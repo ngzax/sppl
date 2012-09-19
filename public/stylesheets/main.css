@@ -99,15 +99,13 @@
 }
 
 #ResourceMenu a.selected {
-  background-color : #FFFFFF;
-  color            : #4E56C2;
-  font-weight      : bold;
-  margin-right     : 15px;
-  padding-top      : 3px;
-  padding-right    : 3px;
-  padding-bottom   : 12px;
-  padding-left     : 3px;
-  text-decoration  : none;
+  background      : -webkit-gradient(linear, left top, left bottom, from(#EE8A52), to(white));
+  background      : -moz-linear-gradient(top, #EE8A52, white 40%);
+  color           : #4E56C2;
+  font-weight     : bold;
+  margin-right    : 15px;
+  padding         : 11px 3px 11px 3px;
+  text-decoration : none;
 }
 
 #SubResourceMenu {

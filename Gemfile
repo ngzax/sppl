@@ -4,7 +4,6 @@ gem "rails",                      "~> 3.0"
 gem "acts_as_list",               "~> 0.1"
 gem "authlogic",                  "~> 3.1"
 gem "builder",                    "~> 2.1"
-gem "heroku"
 gem "inherited_resources",        "~> 1.2"
 gem "inherited_resources_views",  "~> 0.4"
 gem 'pg'

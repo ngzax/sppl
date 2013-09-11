@@ -16,7 +16,7 @@ class GamesController < InheritedResources::Base
 
   def edit
     @game = Game.find(params[:id])
-    @players = Player.all
+    @results = @game.results
   end
 
   def index

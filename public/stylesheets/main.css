@@ -251,7 +251,7 @@
 }
 
 #ViewerCompressed td {
-  border        : 1px ridge;
+  border        : 0px ridge;
   padding       : 3px 3px 3px 3px;
 	text-align    : left;
 }

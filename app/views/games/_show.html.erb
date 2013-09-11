@@ -1,5 +1,5 @@
 <div id="ViewerCompressed">
-  <table border="1" cellpadding="5" cellspacing="3">
+  <table cellpadding="5" cellspacing="3">
     <tr>
       <th align="right">Match:</th>
       <td><%= link_to @game.match.match_date, match_path(@game.match) %></td>
@@ -14,24 +14,14 @@
         <% if @game.players.empty? %>
         <i>None</i>
       <% else %>
-        <table border="0" cellpadding="3" cellspacing="3">
-          <% for gp in @game.results %>
-          <tr>
-            <td><%= gp.place %>.</td>
-            <td><%= link_to "#{gp.player}", player_path(gp.player) %></td>
-            <td>(<%= gp.points %>)</td>
-<% if changes_allowed? %>
-            <td>
-          <% unless gp.place == 1 %> 
-            <%= link_to "[up]", {:controller => :players, :action => 'move', :method => 'move_higher', :game_player_id => gp.id} %> 
-          <% end %> 
-          <% unless gp.last? %> 
-            <%= link_to "[down]", {:controller => :players, :action => 'move', :method => 'move_lower', :game_player_id => gp.id} %> 
+        <table cellpadding="3" cellspacing="3">
+          <% @game.results.each do |result| %>
+            <tr>
+              <td><%= result.place %>.</td>
+              <td><%= link_to "#{result.player}", player_path(result.player) %></td>
+              <td>(<%= result.points %>)</td>
+            </tr>
           <% end %>
-            </td>
-<% end %>
-          </tr>
-        <% end %>
         </table>
         <% end %>
       </td>

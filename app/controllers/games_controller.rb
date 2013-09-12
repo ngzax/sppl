@@ -2,6 +2,12 @@ class GamesController < InheritedResources::Base
 
   actions :destroy, :show
   before_filter :require_user
+ 
+  def choose_players
+    @game = Game.find(params[:id])
+    @players = Player.all
+    render :action => :new
+  end
   
   def create
     @game = Game.new(params[:game])
@@ -16,7 +22,6 @@ class GamesController < InheritedResources::Base
 
   def edit
     @game = Game.find(params[:id])
-    @results = @game.results
   end
 
   def index

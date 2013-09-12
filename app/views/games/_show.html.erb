@@ -29,7 +29,7 @@
 <% if changes_allowed? %>
     <tr>
       <th>Actions</th>
-      <td><%= link_to "Choose Players", :action => :edit, :id => @game.id %></td>
+      <td><%= link_to "Choose Players", :action => :choose_players, :id => @game.id %></td>
     </tr>
 <% end %>
   </table>

@@ -3,4 +3,5 @@
 db/*.sqlite3
 db/*.dump
 log/*.log
+sql/
 tmp/

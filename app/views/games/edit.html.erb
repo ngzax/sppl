@@ -1,5 +1,5 @@
 <div id="ViewerCompressed">
-  <%= form_for(@game) do |f| %>
+  <%= form_for(@game, :action => :update, :id => @game.id) do |f| %>
     <table>
       <tr>
         <th align="right">Match:</th>
@@ -33,6 +33,7 @@
         </tr>
       <% end %>
     </table>
+    <%= f.submit "Save" if changes_allowed? %>
   <% end %>
 </div>
 <%= link_to 'Show', resource %> |

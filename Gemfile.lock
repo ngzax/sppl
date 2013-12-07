@@ -62,7 +62,6 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25.1)
-    newrelic_rpm (3.7.0.177)
     pg (0.17.0)
     polyglot (0.3.3)
     rack (1.2.8)
@@ -128,7 +127,6 @@ DEPENDENCIES
   foreman
   inherited_resources (~> 1.2)
   inherited_resources_views (~> 0.4)
-  newrelic_rpm
   pg
   rails (~> 3.0)
   shoulda

@@ -8,6 +8,7 @@ gem "authlogic",                  "~> 3.1"
 gem "builder",                    "~> 2.1"
 gem "inherited_resources",        "~> 1.2"
 gem "inherited_resources_views",  "~> 0.4"
+gem 'newrelic_rpm'
 gem 'pg'
 gem 'taps'
 gem 'thin'

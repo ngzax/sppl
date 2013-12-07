@@ -3,10 +3,16 @@ class Player < ActiveRecord::Base
   has_many :results, :dependent => :restrict
   has_many :games, :through => :results, :order => "place"
 
+  scope :active, where(1 == 1)
+  
   def <=>(another_player)
     self.total_points <=> another_player.total_points
   end
 
+  def self.sorted_by_first_name
+    order('first_name, last_name')
+  end
+  
   def full_name
     return "#{self.first_name} #{self.last_name}"
   end

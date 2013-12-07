@@ -23,7 +23,7 @@
       <th>Players</th>
       <td>
         <table>
-        <% for player in @players %>
+        <% @players.each do |player| %>
           <tr>
             <td><%= check_box_tag "player_ids[]", "#{player.id}", @game.players.include?(player) -%></td>
             <td><%= player %></td>

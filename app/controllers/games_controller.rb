@@ -5,7 +5,7 @@ class GamesController < InheritedResources::Base
  
   def choose_players
     @game = Game.find(params[:id])
-    @players = Player.all
+    @players = Player.active.sorted_by_first_name
     render :action => :new
   end
   
@@ -32,7 +32,7 @@ class GamesController < InheritedResources::Base
 
   def new
     @game = Game.new
-    @players = Player.all
+    @players = Player.active.sorted_by_first_name
   end
 
   def update

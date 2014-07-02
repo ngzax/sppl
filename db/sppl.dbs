@@ -86,12 +86,12 @@
 	</schema>
 	<connector name="PostgreSQL" database="PostgreSQL" driver_class="org.postgresql.Driver" driver_jar="postgresql-8.4-701.jdbc3.jar" host="localhost" port="5432" instance="sppl_dev" user="daryl" passwd="cmV2ejFsbGE=" schema_mapping="" />
 	<layout name="public" show_relation_columns="y" >
-		<entity schema="public" name="games" x="252" y="252" />
 		<entity schema="public" name="seasons" x="56" y="42" />
 		<entity schema="public" name="results" x="448" y="252" />
 		<entity schema="public" name="players" x="630" y="252" />
 		<entity schema="public" name="users" x="42" y="448" />
 		<entity schema="public" name="matches" x="252" y="42" />
 		<entity schema="public" name="schema_migrations" x="252" y="532" />
+		<entity schema="public" name="games" x="252" y="252" />
 	</layout>
 </project>

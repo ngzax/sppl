@@ -1,11 +1,12 @@
 source "http://rubygems.org"
-ruby "1.9.3"
+ruby "2.1.6"
 
 gem "rails",                      "~> 3.0"
 
 gem "acts_as_list",               "~> 0.1"
 gem "authlogic",                  "~> 3.1"
 gem "builder",                    "~> 2.1"
+gem 'coveralls', require: false
 gem "foreman"
 gem "inherited_resources",        "~> 1.2"
 gem "inherited_resources_views",  "~> 0.4"

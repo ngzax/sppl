@@ -9,8 +9,10 @@ gem "builder",                    "~> 2.1"
 gem "foreman"
 gem "inherited_resources",        "~> 1.2"
 gem "inherited_resources_views",  "~> 0.4"
+gem "metric_fu"
 gem 'newrelic_rpm'
 gem 'pg'
+gem "simplecov"
 gem 'taps'
 gem 'thin'
 

@@ -1,4 +1,14 @@
 ENV["RAILS_ENV"] = "test"
+require 'metric_fu'
+require 'metric_fu/metrics/rcov/simplecov_formatter'
+require 'simplecov'
+
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+  SimpleCov::Formatter::HTMLFormatter,
+  SimpleCov::Formatter::MetricFu
+]
+SimpleCov.start
+
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'authlogic/test_case'
@@ -39,4 +49,3 @@ class ActionController::TestCase
   end
 
 end
-

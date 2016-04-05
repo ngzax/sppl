@@ -44,8 +44,6 @@ ActiveRecord::Schema.define(:version => 20111105151747) do
     t.datetime "updated_at"
   end
 
-  add_index "results", ["game_id", "player_id"], :name => "ak_game_players"
-
   create_table "seasons", :force => true do |t|
     t.string   "ordinal"
     t.datetime "created_at"

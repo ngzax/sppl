@@ -11,8 +11,12 @@ class GamesController < InheritedResources::Base
   
   def create
     @game = Game.new(params[:game])
-    @game.players = Player.find(params[:player_ids]) if params[:player_ids]
     if @game.save
+      if params[:player_ids]
+        params[:player_ids].each_index do |i|
+          Result.create(:game => @game, :player_id => params[:player_ids][i].to_i, :place => i) 
+        end
+      end
       flash[:notice] = "Game was successfully created!"
       redirect_to :action => :index
     else
@@ -37,8 +41,13 @@ class GamesController < InheritedResources::Base
 
   def update
     @game = Game.find(params[:id])
-    @game.players = Player.find(params[:player_ids]) if params[:player_ids]
-    if @game.update_attributes(params[:game])
+    if @game
+      if params[:game][:results_attributes]
+        params[:game][:results_attributes].each_pair do |k, v|
+          r = Result.find(v[:id])
+          r.update_attributes(:player_id => v[:player_id].to_i, :place => (k.to_i + 1)) 
+        end
+      end
       flash[:notice] = "Game was successfully updated!"
       redirect_to :action => :show, :id => @game
     else

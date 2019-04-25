@@ -1,4 +1,4 @@
-<table>
+<table class="uk-table uk-align-center">
   <tr>
     <th>Name</th>
     <th>Start Year</th>
@@ -25,5 +25,5 @@
 </table>
 <p/>
 <% if changes_allowed? %>
-<%= link_to "Add a New Season", new_season_path %>
+  <%= link_to "Add a New Season", new_season_path, class: "uk-button" %>
 <% end %>

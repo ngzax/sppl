@@ -1,16 +1,16 @@
-<%= form_for(@player) do |f| %>
-  <% if @player.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@player.errors.count, "error") %> prohibited this Player from being saved:</h2>
+<% if @player.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@player.errors.count, "error") %> prohibited this Player from being saved:</h2>
 
-      <ul>
-      <% @player.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <ul>
+    <% @player.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 
+<%= form_for(@player, {html: {class: "uk-form"}}) do |f| %>
   <table>
     <tr>
       <th>Player #</th>
@@ -34,7 +34,9 @@
     </tr>
   </table>
   <p/>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div>
+    <%= f.submit "Update Player", {class: "uk-button"} %>
   </div>
+
 <% end %>

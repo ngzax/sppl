@@ -1,9 +1,9 @@
-<table>
+<table class="uk-table uk-align-center">
   <tr>
-    <th>Season</th>
-    <th>Match</th>
+    <th class="uk-width-2-10">Season</th>
+    <th class="uk-width-2-10">Match</th>
 <% if changes_allowed? %>
-    <th class="actions">Actions</th>
+    <th class="uk-width-2-10">Actions</th>
   </tr>
 <% end %>
 <%
@@ -12,13 +12,13 @@
   <tr>
   <td rowspan="<%= @matches.count %>"><%= link_to @season, season_path(@season.id) -%></td>
 <%
-      @matches.each { |match| 
+      @matches.each { |match|
 %>
     <td><%= link_to "#{match}", match %></td>
 <% if changes_allowed? %>
     <td class="actions">
-      <%= link_to "Change", edit_match_path(match) %>&nbsp;/
-      <%= link_to "Remove", match, :confirm => "Are you sure?", :method => :delete %>
+      <%= link_to "Change", edit_match_path(match), class: "uk-button uk-button-primary uk-button-small" -%>
+      <%= link_to "Remove", match, class: "uk-button uk-button-danger uk-button-small", method: :delete, data: {confirm: "Are you sure?"} %>
     </td>
 <% end %>
   </tr>
@@ -36,5 +36,5 @@
 </table>
 <p/>
 <% if changes_allowed? %>
-<%= link_to "Add a New Match", new_match_path %>
+  <%= link_to "Add a New Match", new_match_path, class: "uk-button" %>
 <% end %>

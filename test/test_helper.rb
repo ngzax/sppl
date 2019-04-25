@@ -1,51 +1,50 @@
 ENV["RAILS_ENV"] = "test"
+require File.expand_path('../../config/environment', __FILE__)
+
+require 'factory_girl'
+
+require 'rails/test_help'
+require 'minitest/rails'
+require 'minitest/reporters'
+
+reporter_options = { color: true }
+Minitest::Reporters.use! [Minitest::Reporters::DefaultReporter.new(reporter_options)]
+
 require 'metric_fu'
 require 'metric_fu/metrics/rcov/simplecov_formatter'
 require 'simplecov'
 
-SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
-  SimpleCov::Formatter::HTMLFormatter,
-  SimpleCov::Formatter::MetricFu
-]
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
+  [
+    SimpleCov::Formatter::HTMLFormatter,
+    SimpleCov::Formatter::MetricFu
+  ]
+)
 SimpleCov.start
 
-require File.expand_path('../../config/environment', __FILE__)
-require 'rails/test_help'
-require 'authlogic/test_case'
 
 class ActiveSupport::TestCase
+  include FactoryGirl::Syntax::Methods
   # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.
   #
   # Note: You'll currently still have to declare fixtures explicitly in integration tests
   # -- they do not yet inherit this setting
-  fixtures :all
+  # fixtures :all
 
   # Add more helper methods to be used by all tests here...
 end
 
 class ActionController::TestCase
-  setup :activate_authlogic
-
-#  def current_user
-#    @user
-#  end
-#
-  def current_user_session
-    @current_user_session ||= UserSession.find
-  end
+  include Devise::TestHelpers
 
   def sign_in_as_admin
-    @user = Factory(:admin)
-    UserSession.create(@user)
+    admin_user = create(:admin)
+    sign_in admin_user
   end
 
   def sign_in_as_player
-    @user = Factory(:user)
-    UserSession.create(@user)
-  end
-
-  def sign_out_user
-    current_user_session.destroy
+    player = create(:user)
+    sign_in player
   end
 
 end

@@ -1,7 +1,13 @@
 class PlayersController < InheritedResources::Base
 
   actions :create, :destroy, :edit, :new, :show, :update
- 
+  before_action :authenticate_user!
+
+  def create
+    params.permit!
+    super
+  end
+
   def index
     @page_title = "All Players"
     self.set_season
@@ -17,12 +23,17 @@ class PlayersController < InheritedResources::Base
   end
 
   def set_season
-    @season = (params[:season_id].nil?) ? Season.find(:last) : Season.find(params["season_id"])
+    @season = (params[:season_id].nil?) ? Season.last : Season.find(params["season_id"])
   end
 
   def show
     self.set_season
     show! { @page_title = "Showing a Player" }
+  end
+
+  def update
+    params.permit!
+    super
   end
 
 end

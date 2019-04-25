@@ -1,0 +1,28 @@
+<nav class="uk-navbar">
+  <a class="uk-navbar-brand" href="/"><i class="uk-icon-home uk-icon-small"></i></a>
+
+  <% if user_signed_in? %>
+    <ul class="uk-navbar-nav uk-hidden-small">
+      <li><%= link_to 'Players', players_path %></li>
+      <li><%= link_to 'Games', games_path %></li>
+      <li><%= link_to 'Matches', matches_path %></li>
+      <li><%= link_to 'Seasons', seasons_path %></li>
+    </ul>
+    <ul class="uk-navbar-nav uk-hidden-small uk-navbar-flip">
+      <% if current_user.try(:admin?) %>
+        <!-- li><%= link_to 'Admin', '/admin' %></li -->
+        <li><%= link_to 'Users', users_path %></li>
+      <% end %>
+      <li>
+        <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+      </li>
+    </ul>
+  <% else %>
+    <ul class="uk-navbar-nav uk-hidden-small uk-navbar-flip">
+      <li class="uk-active">
+        <%= link_to "Sign In", new_user_session_path %>
+      </li>
+    </ul>
+  <% end %>
+
+</nav>

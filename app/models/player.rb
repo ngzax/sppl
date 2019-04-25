@@ -1,10 +1,10 @@
 class Player < ActiveRecord::Base
 
-  has_many :results, :dependent => :restrict
-  has_many :games, :through => :results, :order => "place"
+  has_many :results, dependent: :restrict_with_error
+  has_many :games, through: :results
 
-  scope :active, where(1 == 1)
-  
+  scope :active, ->{where("1 = 1")}
+
   def <=>(another_player)
     self.total_points <=> another_player.total_points
   end
@@ -12,7 +12,7 @@ class Player < ActiveRecord::Base
   def self.sorted_by_first_name
     order('first_name, last_name')
   end
-  
+
   def full_name
     return "#{self.first_name} #{self.last_name}"
   end
@@ -35,7 +35,7 @@ class Player < ActiveRecord::Base
   end
 
   def season_total_points(season_id)
-    return 0 if self.season_results(season_id).nil? 
+    return 0 if self.season_results(season_id).nil?
     p = self.scoring_results(season_id).inject(0) {|sum, each| sum + each.points}
     p.round(2)
   end
@@ -45,7 +45,7 @@ class Player < ActiveRecord::Base
   end
 
   def total_points
-    self.season_total_points(Season.find(:last).id)
+    self.season_total_points(Season.last.id)
   end
 
 end

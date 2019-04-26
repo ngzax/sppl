@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 2.1.6
+  - 2.3.8
 
 before_script:
   - "psql -c 'create database sppl_test;' -U postgres"

@@ -1,40 +1,44 @@
-<div id="Editor">
-<%= form_for(@game) do |f| %>
-  <% if @game.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@game.errors.count, "error") %> prohibited this Game from being saved:</h2>
-      <ul>
-      <% @game.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <table>
-    <tr>
-      <th>Game #</th>
-      <td><%= f.text_field :ordinal %></td>
-    </tr>
-    <tr>
-      <th><%= f.label :match %></th>
-      <td><%= f.collection_select(:match_id, Match.all, :id, :match_date)%></td>
-    </tr>
-      <th>Players</th>
-      <td>
-        <table>
-        <% @players.each do |player| %>
-          <tr>
-            <td><%= check_box_tag "player_ids[]", "#{player.id}", @game.players.include?(player) -%></td>
-            <td><%= player %></td>
-          </tr>
-        <% end %>
-      </table>
-    </td>
-  </table>
-  <p/>
-  <div class="actions">
-    <%= f.submit %>
+<% if @game.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@game.errors.count, "error") %> prohibited this Game from being saved:</h2>
+    <ul>
+    <% @game.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
   </div>
 <% end %>
+
+<div class="uk-grid">
+  <%= form_for(@game, {html: {class: "uk-form"}}) do |f| %>
+    <fieldset class="uk-form-horizontal">
+      <div class="uk-form-row">
+        <label class="uk-form-label" for="ordinal">Game #:</label>
+        <div id="ordinal" class="uk-form-controls"><%= f.text_field :ordinal %></div>
+      </div>
+      <div class="uk-form-row">
+        <label class="uk-form-label" for="match_id"><%= f.label :match %> Date:</label>
+        <div id="match_id" class="uk-form-controls">
+          <%= f.collection_select(:match_id, Match.all, :id, :match_date)%>
+        </div>
+      </div>
+      <div class="uk-form-row">
+        <label class="uk-form-label">Players:</label>
+        <div id="players" class="uk-form-controls">
+          <table class="uk-table uk-align-center">
+            <% @players.each do |player| %>
+              <tr>
+                <td><%= check_box_tag "player_ids[]", "#{player.id}", @game.players.include?(player) -%></td>
+                <td><%= player %></td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+      </div>
+      <div class="uk-form-row">
+        <%= f.submit class: "uk-button uk-button-primary" %>
+        <%= link_to 'Cancel', {:controller => params[:controller], :action => :index}, class: "uk-button uk-button-danger" %>
+      </div>
+      </fieldset>
+  <% end %>
 </div>

@@ -1,36 +1,41 @@
-<div id="ViewerCompressed">
-  <table cellpadding="5" cellspacing="3">
-    <tr>
-      <th align="right">Match:</th>
-      <td><%= link_to @game.match.match_date, match_path(@game.match) %></td>
-    </tr>
-    <tr>
-      <th align="right">Game #</th>
-      <td><%= @game.ordinal %></td>
-    </tr>
-    <tr>
-      <th align="right">Players:</th>
-      <td>
-        <% if @game.players.empty? %>
-        <i>None</i>
-      <% else %>
-        <table cellpadding="3" cellspacing="3">
-          <% @game.results.each do |result| %>
-            <tr>
-              <td><%= result.place %>.</td>
-              <td><%= link_to "#{result.player}", player_path(result.player) %></td>
-              <td>(<%= result.points %>)</td>
-            </tr>
+<div class='uk-grid'>
+  <div class='uk-panel uk-align-center uk-width-1-2'>
+    <table class="uk-table uk-align-center">
+      <tr>
+        <th class="uk-text-right">Match:</th>
+        <td><%= link_to @game.match.match_date, match_path(@game.match) %></td>
+      </tr>
+      <tr>
+        <th  class="uk-width-1-10 uk-text-right">Game #</th>
+        <td><%= @game.ordinal %></td>
+      </tr>
+      <tr>
+        <th  class="uk-width-1-10 uk-text-right">Players:</th>
+        <td>
+          <% if @game.players.empty? %>
+          <i>None</i>
+        <% else %>
+          <table class="uk-table uk-table-hover uk-align-center">
+            <% @game.results.each do |result| %>
+              <tr>
+                <td><%= result.place %>.</td>
+                <td><%= link_to "#{result.player}", player_path(result.player) %></td>
+                <td>(<%= result.points %>)</td>
+              </tr>
+            <% end %>
+          </table>
           <% end %>
-        </table>
-        <% end %>
-      </td>
-    </tr>
-<% if changes_allowed? %>
-    <tr>
-      <th>Actions</th>
-      <td><%= link_to "Choose Players", :action => :choose_players, :id => @game.id %></td>
-    </tr>
-<% end %>
-  </table>
+        </td>
+      </tr>
+      <% if changes_allowed? %>
+        <tr>
+          <th class="uk-width-1-10 uk-text-right">Actions:</th>
+          <td>
+            <%= link_to "Choose Players", {:action => :choose_players, :id => @game.id}, class: "uk-button" %>
+            <%= link_to "Edit", edit_resource_path(@season), class: "uk-button"  %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
 </div>

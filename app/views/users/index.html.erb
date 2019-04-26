@@ -1,0 +1,12 @@
+<div class="uk-container uk-container-center uk-margin-top uk-width-8-10">
+  <h3>Users</h3>
+  <table class="uk-table uk-align-center">
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <%= render user %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

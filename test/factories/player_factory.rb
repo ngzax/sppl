@@ -1,13 +1,17 @@
-Factory.define :player do |player|
-  player.first_name "Gus"
-  player.last_name  "Van Zant"
-  player.email      "gv@pokerstars.net"
-  player.phone      "5555555555"
+FactoryGirl.define do
+  factory :player do |player|
+    player.first_name "Gus"
+    player.last_name  "Van Zant"
+    sequence(:email)  {|n| "player#{n}@sppl.com"}
+    player.phone      "5555555555"
+  end
 end
 
-Factory.define :player_2, :parent => :player do |player|
-  player.first_name "Dan"
-  player.last_name  "Harrington"
-  player.email      "dh@pokerstars.net"
-  player.phone      "6666666666"
+FactoryGirl.define do
+  factory :player_2, :parent => :player do |player|
+    player.first_name "Dan"
+    player.last_name  "Harrington"
+    sequence(:email)  {|n| "player#{n}@sppl.com"}
+    player.phone      "6666666666"
+  end
 end

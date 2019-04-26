@@ -1,0 +1,12 @@
+<%= form_for(user, as: :user, controller: :users, action: :update, method: :patch, id: user.id, html: {class: "uk-form"}) do |f| %>
+  <td>
+    <%= link_to user.email, user %>
+  </td>
+  <td>
+      <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
+      <%= f.submit 'Change Role', :class => "uk-button" %>
+  </td>
+  <td>
+    <%= link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => "uk-button uk-form-danger") unless user == current_user %>
+  </td>
+<% end %>

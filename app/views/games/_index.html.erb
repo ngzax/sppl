@@ -1,10 +1,10 @@
-<table>
+<table class="uk-table uk-align-center">
   <tr>
     <th>Match</th>
     <th>Game #</th>
     <th>Player Count</th>
 <% if changes_allowed? %>
-    <th class="actions">Actions</th>
+    <th>Actions</th>
 <% end %>
   </tr>
 <%
@@ -12,33 +12,33 @@
     if !match.games.empty?
 %>
   <tr>
-    <td rowspan="<%= match.games.count %>"><%= link_to "#{match}", match %></td>
-<%
-      match.games.sort.each { |game| 
-%>
-    <td class="numeric"><%= link_to "#{game.ordinal}", game %></td>
-    <td class="numeric"><%= game.players.count %></td>
-<% if changes_allowed? %>
-    <td class="actions">
-      <%= link_to "Change", edit_game_path(game) %>&nbsp;/
-      <%= link_to "Remove", game, :confirm => "Are you sure?", :method => :delete %>
-    </td>
-<% end %>
+    <td class="uk-width-2-10" rowspan="<%= match.games.count %>"><%= link_to "#{match}", match %></td>
+    <%
+      match.games.sort.each do |game|
+    %>
+    <td class="uk-width-1-10"><%= link_to "#{game.ordinal}", game %></td>
+    <td class="uk-width-1-10"><%= game.players.count %></td>
+    <% if changes_allowed? %>
+      <td class="uk-width-3-10">
+        <%= link_to "Change", edit_game_path(game) %>&nbsp;/
+        <%= link_to "Remove", game, :confirm => "Are you sure?", :method => :delete %>
+      </td>
+    <% end %>
   </tr>
-<%
-      }
+    <%
+      end
     else
-%>
+    %>
   <tr>
     <td><%= link_to "#{match}", match %></td>
     <td colspan="4">No Games</td>
   </tr>
 <%
-    end 
+    end
   end
 %>
 </table>
 <p/>
 <% if changes_allowed? %>
-<%= link_to 'Add a New Game', new_game_path %>
+  <%= link_to 'Add a New Game', new_game_path, {class: "uk-button"} %>
 <% end %>

@@ -1,5 +1,4 @@
-Sppl::Application.routes.draw do
-  
+Rails.application.routes.draw do
   resources :games do
     member do
       get :choose_players
@@ -13,7 +12,7 @@ Sppl::Application.routes.draw do
       get :new_game
     end
   end
-  
+
   resources :players do
     member do
       get :move
@@ -26,12 +25,9 @@ Sppl::Application.routes.draw do
     end
   end
 
-  resources :user_sessions
-  
-  resources :users
- 
-  match 'login' => 'user_sessions#new', :as => :login
-  match 'logout' => 'user_sessions#destroy', :as => :logout
-
   root :to => "players#index"
+
+  devise_for :users
+  resources :users, :only => [:index, :show, :update]
+
 end

@@ -1,60 +1,36 @@
-</html>
-<!DOCTYPE html 
-  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-  <title><%= ApplicationHelper.ShortName %> &raquo; <%= @page_title %></title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
-  <script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-5529863-4']);
-  _gaq.push(['_trackPageview']);
+<!DOCTYPE html>
+<html lang="en" class="uk-height-1-1">
+  <head>
+    <title><%= ApplicationHelper.ShortName %> &raquo; <%= @page_title %></title>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.xx.x/js/uikit.min.js"></script>
+    <%= csrf_meta_tags %>
+  </head>
+  <body class="uk-height-1-1">
+    <div class="uk-container uk-container-center uk-margin-top uk-width-6-10" role="main">
+      <%= link_to(image_tag("sppl_banner.gif", :alt => "#{ApplicationHelper.Name}", class: "uk-align-center"), "/" ) %>
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-  </script>
-</head>
-<body>
-  <!-- BEGIN Header -->
-  <div id="Header">
-    <div id="TopBar">
-      <%= link_to( image_tag( "sppl_banner.gif", :alt => "#{ApplicationHelper.Name}" ), "/" ) %>
-    </div>
-    <div id="ResourceMenu"><%= raw resource_menu %></div>
-  </div>
-  <!-- END Header -->
-  <div id="Content">
-    <% if flash[:error] %>
-    <div id="SystemError">
-      <%= flash[:error] %>
-    </div>
-    <% end %>
-    <% if flash[:status] %>
-    <div id="SystemStatus">
-      <%= flash[:status] %>
-    </div>
-    <% end %>
-    <% if current_user %>
-    <%= yield %>
-    <% else %>
-    <p><%= link_to "Login", :login %></p>
-    <% end %>
-    <!--%= @content_for_layout %-->
-  </div>
-  <div id="Footer">
-    <div id="BottomBar">
-      <p>Version 4 :: Copyright 2011-13 :: <a href="http://databaseddesign.com">Data-based Design, LLC</a> :: All Rights Reserved.</p>
-    </div>
-    <% if current_user %>
-    <p><%= link_to "Logout", :logout %></p>
-    <% end %>
-  </div>
-</body>
-</html>
+      <% if alert %>
+        <div class="uk-alert uk-alert-danger" role="alert"><%= alert %></div>
+      <% end %>
 
+      <% if notice %>
+        <div class="uk-alert uk-alert-success" role="alert"><%= notice %></div>
+      <% end %>
+
+      <%= render "layouts/navigation" %>
+
+      <%= yield %>
+
+      <div class='uk-vertical-align uk-text-center uk-height-1-1'>
+        <div class='panel panel-info'>
+          <div class="uk-vertical-align-middle">
+            <p>Version 5 :: Copyright 2011-19 :: <a href="http://www.ngzax.com">Daryl Richter</a> :: All Rights Reserved.</p>
+          </div>
+        </div>
+      </div>
+    </div> <!-- /container -->
+
+  </body>
+</html>

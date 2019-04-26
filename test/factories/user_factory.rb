@@ -1,12 +1,18 @@
-Factory.define :user do |user|
-  user.username "poker"
-  user.password "password"
-  user.password_confirmation "password"
+FactoryGirl.define do
+  factory :user do
+    sequence(:email)    {|n| "person#{n}@sppl.com"}
+    encrypted_password  "#{Devise::Encryptor.digest(User, 'password')}"
+    password            "password"
+    role                :user
+  end
 end
 
-Factory.define :admin, :parent => :user do |user|
-  user.username "admin"
-  user.password "password"
-  user.password_confirmation "password"
+FactoryGirl.define do
+  factory :admin, :parent => :user do
+    sequence(:email)    {|n| "admin#{n}@sppl.com"}
+    encrypted_password  "#{Devise::Encryptor.digest(User, 'password')}"
+    password            "password"
+    role                :admin
+  end
 end
 

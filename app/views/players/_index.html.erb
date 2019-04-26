@@ -1,11 +1,11 @@
-<table>
+<table class="uk-table uk-align-center">
   <tr>
     <th>Place</th>
     <th>Player</th>
     <th>Total Points</th>
     <th>Games Played</th>
     <% if changes_allowed? %>
-      <th class="actions">Actions</th>
+      <th>Actions</th>
     <% end %>
   </tr>
   <%
@@ -14,12 +14,12 @@
       if player.season_games(@season.id).count > 0
     %>
     <tr>
-      <td><%= i %></td>
-      <td><%= link_to("#{player.full_name}", player) %></td>
-      <td class="numeric"><%= player.season_total_points(@season.id) %></td>
-      <td class="numeric"><%= player.season_games(@season.id).count %></td>
+      <td class="uk-width-1-10"><%= i %></td>
+      <td class="uk-width-2-10"><%= link_to("#{player.full_name}", player) %></td>
+      <td class="uk-width-1-10"><%= player.season_total_points(@season.id) %></td>
+      <td class="uk-width-1-10"><%= player.season_games(@season.id).count %></td>
       <% if changes_allowed? %>
-        <td class="actions">
+        <td class="uk-width-2-10">
           <%= link_to "Change", edit_player_path(player) %>&nbsp;/
           <%= link_to "Remove", player, :confirm => "Are you sure?", :method => :delete %>
         </td>
@@ -28,10 +28,10 @@
     <%
       i += 1
     end
-  end 
+  end
 %>
 </table>
 <p/>
   <% if changes_allowed? %>
-    <%= link_to "Add a New Player", new_player_path %>
+    <%= link_to "Add a New Player", new_player_path, class: "uk-button" %>
   <% end %>

@@ -23,14 +23,14 @@ module ApplicationHelper
   def resource_selected?(resource)
     resource == controller.controller_name
   end
-  
+
   def resource_tab_link(resource, label)
     html_opts = (resource_selected?(resource)) ? {"class" => "selected"} : {}
-    link_to(label, {:controller => resource, :action => "index"}, html_opts) 
+    link_to(label, {:controller => "/#{resource}", :action => "index"}, html_opts)
   end
 
   def set_focus(id)
     javascript_tag("$('#{id}').focus()")
   end
-  
+
 end

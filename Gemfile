@@ -44,7 +44,7 @@ group :test do
   gem "minitest-rails"
   gem "minitest-reporters"
   gem "redgreen"
-  gem "shoulda"
+  gem "shoulda", "~> 3.5.0"
 end
 
 group :production do

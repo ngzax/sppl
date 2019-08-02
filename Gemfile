@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 ruby "2.4.6"
 
-gem "rails", "4.2.10"
+gem "rails", "4.2.11"
 
 gem "coffee-rails", "~> 4.1.0"
 gem "jbuilder", "~> 2.0"
@@ -19,10 +19,11 @@ gem "inherited_resources"
 gem "inherited_resources_views"
 gem "metric_fu"
 gem "pg", "~> 0.15"
+gem "rest-client", ">= 1.8.0"
 gem "sendgrid"
 gem "simplecov"
 gem "simple_form"
-gem 'taps'
+# gem 'taps'
 gem "thin"
 gem "uikit-sass-rails"
 

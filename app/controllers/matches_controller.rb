@@ -5,7 +5,9 @@ class MatchesController < InheritedResources::Base
 
   def create
     params.permit!
-    super
+    super do |format|
+      format.html {redirect_to :controller => :seasons, :action => :show, :id => Season.last}
+    end
   end
 
   def index

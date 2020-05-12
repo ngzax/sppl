@@ -35,7 +35,7 @@ class ActiveSupport::TestCase
 end
 
 class ActionController::TestCase
-  include Devise::TestHelpers
+  include Devise::Test::ControllerHelpers
 
   def sign_in_as_admin
     admin_user = create(:admin)

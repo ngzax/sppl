@@ -17,7 +17,7 @@ test:
   encoding: unicode
   database: sppl_test
   pool:     5
-  username: sppl
+  username: ngzax
   password:
   template: template0
 

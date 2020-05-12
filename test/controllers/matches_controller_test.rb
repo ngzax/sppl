@@ -120,7 +120,7 @@ class MatchesControllerTest < ActionController::TestCase
       assert_difference('Match.count') do
         post :create, match: {season_id: @season.id}
       end
-      assert_redirected_to match_path(assigns(:match))
+      assert_redirected_to season_path(@season.id)
     end
   end
 

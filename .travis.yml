@@ -4,6 +4,13 @@ rvm:
 services:
   - postgresql
 
+addons:
+  postgresql: "11"
+  apt:
+    packages:
+    - postgresql-11
+    - postgresql-client-11
+
 before_script:
   - cp config/database.yml.travis config/database.yml
   - "psql -c 'create database sppl_travis_test;' -U postgres"

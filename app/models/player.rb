@@ -38,7 +38,7 @@ class Player < ActiveRecord::Base
     sql = %Q(
       WITH scoring_results AS (
         SELECT
-          ROUND(CAST(10 * (SQRT(game_results.player_count) / SQRT(results.place)) * (1 + LOG10(10 + 0.25)) AS numeric), 2) AS points
+          ROUND(CAST(10 * (SQRT(game_results.player_count) / SQRT(results.place)) * (1 + LOG(10 + 0.25)) AS numeric), 2) AS points
         FROM
           results
         INNER JOIN "players" ON "players"."id" = "results"."player_id"

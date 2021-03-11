@@ -16,7 +16,7 @@ env:
 
 before_script:
   - cp config/database.yml.travis config/database.yml
-  - "psql -c 'create database sppl_travis_test;' -U postgres"
+  - "psql -c 'create database sppl_travis_test;' -U travis"
   - "bundle exec rake db:migrate"
 
 script: bundle exec rake test
